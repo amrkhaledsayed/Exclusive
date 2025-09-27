@@ -11,7 +11,7 @@ import {
 } from './carousel';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom-dom';
+import { Link } from 'react-router-dom';
 
 const SwiperSection = forwardRef(
   (

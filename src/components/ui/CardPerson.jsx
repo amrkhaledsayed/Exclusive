@@ -1,8 +1,5 @@
-import { CiTwitter } from "react-icons/ci";
-import { CiInstagram } from "react-icons/ci";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
-import { RiInstagramLine } from "react-icons/ri";
-import { TiSocialLinkedin } from "react-icons/ti";
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6';
+import { RiInstagramLine } from 'react-icons/ri';
 const CardPerson = (props) => {
   const { image, name, title } = props;
   return (
@@ -10,7 +7,7 @@ const CardPerson = (props) => {
       <div className="relative mb-6">
         <div className="relative mx-auto">
           <img
-            src={image || "/placeholder.svg"}
+            src={image || '/placeholder.svg'}
             alt={name}
             className="h-full w-full rounded-full border-4 border-gray-100 object-cover transition-colors duration-300 group-hover:border-red-200"
           />
@@ -31,7 +28,7 @@ const CardPerson = (props) => {
         </div>
         <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-red-500 hover:text-white">
           <RiInstagramLine className="h-4 w-4" />
-        </div>{" "}
+        </div>{' '}
         <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-red-500 hover:text-white">
           <FaFacebookF className="h-4 w-4" />
         </div>
