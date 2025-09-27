@@ -126,6 +126,9 @@ export const useAuthQuery = () => {
   const handleGoogleSignIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
+      options: {
+        redirectTo: 'https://exclusive-udl4.vercel.app/',
+      },
     });
 
     if (error) {
