@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { CarouselItem } from '../ui/carousel';
 
 import { forwardRef } from 'react';
-import { Button } from './button';
+import { Button } from './Button';
 import { Sparkles } from 'lucide-react';
 import {
   Carousel,
