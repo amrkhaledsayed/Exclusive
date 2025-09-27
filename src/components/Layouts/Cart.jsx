@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 
 import CartItem from '../ui/CartItem';
 import React, { useState } from 'react';

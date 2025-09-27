@@ -1,6 +1,6 @@
-import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Atom, LifeLine, Mosaic } from "react-loading-indicators";
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { LifeLine } from 'react-loading-indicators';
 
 const PageLoader = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const PageLoader = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000033] backdrop-blur-sm">
-      <LifeLine color="#cd3232" size="medium" text="" textColor="" />{" "}
+      <LifeLine color="#cd3232" size="medium" text="" textColor="" />{' '}
     </div>
   );
 };

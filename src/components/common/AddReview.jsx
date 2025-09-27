@@ -5,7 +5,6 @@ import { Rating } from '@mui/material';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { useAuthQuery } from '@/Supabase/useFetchUser';
 import React, { useState } from 'react';
 import { Loading } from '../ui/Loading';
 import { AppContext } from '@/utils/context';
