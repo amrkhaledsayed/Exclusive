@@ -28,7 +28,7 @@ const SelectDemo = ({ className }) => {
       className="z-[1500]"
     >
       <SelectTrigger
-        className={`${className} text-violet11 hover:bg-mauve3 data-[placeholder]:text-violet9 h-[35px] items-center justify-center gap-[5px] rounded bg-transparent px-[15px] text-[13px] leading-none shadow-[0_2px_10px] shadow-black/10 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black md:inline-flex`}
+        className={`${className} text-violet11 hover:bg-mauve3 data-[placeholder]:text-violet9 h-[35px] items-center justify-center gap-[5px] rounded bg-transparent px-[15px] text-[13px] leading-none  outline-none focus:shadow-[0_0_0_2px] focus:shadow-black md:inline-flex`}
         aria-label="Language"
       >
         <SelectValue placeholder="Select a language…" />
@@ -36,7 +36,7 @@ const SelectDemo = ({ className }) => {
 
       <SelectContent
         side="bottom"
-        className="overflow-hidden z-100 rounded-md bg-white shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]"
+        className="overflow-hidden z-100 rounded-md bg-white "
       >
         <SelectGroup className="z-100">
           <SelectItem value="en">English</SelectItem>
