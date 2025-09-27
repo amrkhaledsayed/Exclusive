@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const ProductOffer = (props) => {
   const { icon, iconTitle, titleDiscount, bgColor } = props;
