@@ -70,13 +70,13 @@ const Header = () => {
               {t(
                 'Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%'
               )}
+              <Link
+                to="/allProducts"
+                className="underline  md:text-[14px] text-[10px]"
+              >
+                {t('Shop Now')}!
+              </Link>
             </p>
-            <Link
-              to="/allProducts"
-              className="underline  md:text-[14px] text-[10px]"
-            >
-              {t('Shop Now')}!
-            </Link>
           </div>
           <SelectVariants className="md:flex hidden w-[100px] outline-none" />
         </div>
