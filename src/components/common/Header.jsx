@@ -66,12 +66,15 @@ const Header = () => {
       <div className="flex min-h-12 items-center bg-black">
         <div className="mx-auto flex max-w-[900px] items-center justify-center gap-2 px-2.5 text-sm text-white md:justify-between md:text-base">
           <div className="flex gap-1 text-center md:flex-row md:items-center">
-            <p className="text-[10px]">
+            <p className="text-[10px] md:text-[14px]">
               {t(
                 'Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%'
               )}
             </p>
-            <Link to="/allProducts" className="underline">
+            <Link
+              to="/allProducts"
+              className="underline  md:text-[14px] text-[10px]"
+            >
               {t('Shop Now')}!
             </Link>
           </div>
