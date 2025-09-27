@@ -101,9 +101,9 @@ const CheckOut = () => {
       addOrder(orderData);
       clearData();
       setLoading(false);
-
+      navigate('/');
       reset();
-    }, 2000);
+    }, 3000);
   };
 
   const handleChange = (event) => {
