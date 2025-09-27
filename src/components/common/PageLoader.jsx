@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom-dom';
+import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LifeLine } from 'react-loading-indicators';
 
