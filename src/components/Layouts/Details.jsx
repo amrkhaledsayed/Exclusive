@@ -119,12 +119,7 @@ const Details = () => {
         reviews: product?.reviews?.length,
       },
       {
-        onSuccess: () => {
-          console.log('Item added successfully!');
-        },
-        onError: (error) => {
-          console.error('Error adding item:', error.message);
-        },
+       
       }
     );
   };

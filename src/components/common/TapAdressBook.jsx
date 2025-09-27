@@ -59,7 +59,6 @@ const TapAdressBook = ({
               style={{ borderRadius: '8px' }}
               onClick={() => {
                 handelDefault(order.id);
-                console.log(order.id);
               }}
               className={clsx(
                 'rounded-2xl border-red-200 bg-red-50/30 transition-colors duration-200 hover:bg-red-50/50',
