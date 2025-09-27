@@ -6,7 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from 'react-router';
 import * as React from 'react';
 import { unstable_OneTimePasswordField as OneTimePasswordField } from 'radix-ui';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 import supabase from '@/Supabase/supabase-client';
 import { useState } from 'react';
 import toast from 'react-hot-toast';

@@ -11,7 +11,7 @@ import RelatedItem from '../common/RelatedItem';
 
 import ReviwsItem from '../ui/ReviwsItem';
 import { useFetchDetails } from '../Hooks/useFetchDetails';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { Badge } from '../ui/badge';
 import { FaArrowsRotate } from 'react-icons/fa6';
