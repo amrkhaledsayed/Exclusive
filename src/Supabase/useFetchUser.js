@@ -127,7 +127,7 @@ export const useAuthQuery = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'https://exclusive-udl4.vercel.app/',
+        redirectTo: 'http://localhost:3000/auth/callback', // أو عنوان URL المناسب لبيئتك
       },
     });
 
