@@ -9,7 +9,7 @@ import Contact from './components/Layouts/Contact';
 import Details from './components/Layouts/Details';
 import AllProducts from './components/Layouts/AllProducts';
 import ScrollToTop from './utils/ScrollToTop';
-import Wishlist from './components/Layouts/wishlist';
+import Wishlist from './components/Layouts/Wishlist';
 import PageLoader from './components/common/PageLoader';
 import Cart from './components/Layouts/Cart';
 import CheckOut from './components/Layouts/CheckOut';
