@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Radio from '@mui/material/Radio';
 import React, { useEffect, useState } from 'react';
 import RadioGroup from '@mui/material/RadioGroup';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 
 import ItemCheckOut from '../ui/IitemCheck';
 import { Input } from '../ui/input';
@@ -35,7 +35,8 @@ const CheckOut = () => {
     quantity,
   } = location.state || {};
 
-  const { user, addOrder, cartList, data, clearData } = React.useContext(AppContext);
+  const { user, addOrder, cartList, data, clearData } =
+    React.useContext(AppContext);
 
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState();
