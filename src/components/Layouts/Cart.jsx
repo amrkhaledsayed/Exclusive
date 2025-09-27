@@ -127,10 +127,12 @@ const Cart = () => {
             <div className="flex w-full items-center gap-3 md:w-auto">
               <Input
                 placeholder={t('Coupon Code')}
+                value={'Under Maintenance'}
                 className="h-12 w-full  rounded-md bg-gray-100 px-4 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 md:w-72"
               />
               <Button
                 variant="destructive"
+                disable={true}
                 className="h-12 w-full max-w-[173px] border-[#f5a4a4]"
               >
                 {t('Apply Coupon')}
