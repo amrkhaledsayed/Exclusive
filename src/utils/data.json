@@ -1,0 +1,163 @@
+{
+  "womanData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/tops/blue-frock/1.webp",
+      "title": "Blue Frock",
+      "Link": "product/162",
+      "description": "The Blue Frock is a charming and stylish dress for various occasions. With a vibrant blue color and a comfortable design, it adds a touch of elegance to your wardrobe.",
+      "price": "$26.35"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-crystal-earring/1.webp",
+      "title": "Heshe Women's Leather Bag",
+      "Link": "product/173",
+      "description": "The Heshe Women's Leather Bag is a luxurious and high-quality leather bag for the sophisticated woman. With a timeless design and durable craftsmanship, it's a versatile accessory.",
+      "price": "$124.96"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/1.webp",
+      "title": "Green Crystal Earring",
+      "Link": "product/182",
+      "description": "The Green Crystal Earring is a dazzling accessory that features a vibrant green crystal. With a classic design, it adds a touch of elegance to your ensemble, perfect for formal or special occasions.",
+      "price": "$25.42"
+    }
+  ],
+  "manData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+      "title": "Blue & Black Check Shirt",
+      "Link": "/product/83",
+      "description": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+      "price": "$25.39"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/1.webp",
+      "title": "Brown Leather Belt Watch",
+      "Link": "/product/93",
+      "description": "The Brown Leather Belt Watch is a stylish timepiece with a classic design. Featuring a genuine leather strap and a sleek dial, it adds a touch of sophistication to your look.",
+      "price": "$84.6"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp",
+      "title": "Nike Air Jordan 1 Red And Black",
+      "Link": "/product/88",
+      "description": "The Nike Air Jordan 1 in Red and Black is an iconic basketball sneaker known for its stylish design and high-performance features, making it a favorite among sneaker enthusiasts and athletes.",
+      "price": "$143.81"
+    }
+  ],
+  "electronicsData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/1.webp",
+      "title": "Apple AirPods Max (Silver)",
+      "Link": "/product/101",
+      "description": "High-fidelity over-ear headphones with active noise cancellation, spatial audio and premium build.",
+      "price": "$549.00"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/1.webp",
+      "title": "Apple AirPower Wireless Charger",
+      "Link": "/product/102",
+      "description": "Wireless charging pad for multiple Apple devices with fast charging support and compact design.",
+      "price": "$199.00"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-homepod-mini-cosmic-grey/1.webp",
+      "title": "Apple HomePod mini (Cosmic Grey)",
+      "Link": "/product/103",
+      "description": "Compact smart speaker with Siri integration, excellent 360° sound and seamless Apple ecosystem support.",
+      "price": "$99.00"
+    }
+  ],
+  "homeLifestyleData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/1.webp",
+      "title": "Decoration Swing",
+      "Link": "/product/43",
+      "description": "The Decoration Swing is a charming addition to your home decor. Crafted with intricate details, it adds a touch of elegance and whimsy to any room.",
+      "price": "$53.75"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/1.webp",
+      "title": "House Showpiece Plant",
+      "Link": "/product/45",
+      "description": "The House Showpiece Plant is an artificial plant that brings a touch of nature to your home without the need for maintenance. It adds greenery and style to any space.",
+      "price": "$37.01"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp",
+      "title": "Annibale Colombo Bed",
+      "Link": "/product/11",
+      "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
+      "price": "$1737.16"
+    }
+  ],
+  "sportsOutdoorData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/sports-accessories/american-football/1.webp",
+      "title": "American Football",
+      "Link": "/product/137",
+      "description": "The American Football is a classic ball used in American football games. It is designed for throwing and catching, making it an essential piece of equipment for the sport.",
+      "price": "$19"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-ball/1.webp",
+      "title": "Baseball Ball",
+      "Link": "/product/138",
+      "description": "The Baseball Ball is a standard baseball used in baseball games. It features a durable leather cover and is designed for pitching, hitting, and fielding in the game of baseball.",
+      "price": "$8.84"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/1.webp",
+      "title": "Baseball Glove",
+      "Link": "/product/139",
+      "description": "The Baseball Glove is a protective glove worn by baseball players. It is designed to catch and field the baseball, providing players with comfort and control during the game.",
+      "price": "$24.27"
+    }
+  ],
+  "groceriesPetsData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp",
+      "title": "Apple",
+      "Link": "/product/16",
+      "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+      "price": "$1.74"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/groceries/beef-steak/1.webp",
+      "title": "Beef Steak",
+      "Link": "/product/17",
+      "description": "High-quality beef steak, great for grilling or cooking to your preferred level of doneness.",
+      "price": "$11.74"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/1.webp",
+      "title": "Chicken Meat",
+      "Link": "/product/19",
+      "description": "Fresh and tender chicken meat, suitable for various culinary preparations.",
+      "price": "$8.62"
+    }
+  ],
+  "healthBeautyData": [
+    {
+      "image": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
+      "title": "Essence Mascara Lash Princess",
+      "Link": "/product/1",
+      "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects.",
+      "price": "$8.94"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/1.webp",
+      "title": "Pomegranate Face Wash",
+      "Link": "/product/2",
+      "description": "Gentle foaming face wash enriched with pomegranate extract for radiant skin.",
+      "price": "$16.35"
+    },
+    {
+      "image": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/1.webp",
+      "title": "Red Lipstick",
+      "Link": "/product/3",
+      "description": "Matte finish red lipstick with long-lasting formula and rich pigmentation.",
+      "price": "$13.51"
+    }
+  ]
+}
