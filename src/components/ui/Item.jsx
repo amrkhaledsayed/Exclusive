@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 import Skeleton from '@mui/material/Skeleton';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useWishlist } from '../../Supabase/useAddtofavorites';
 import { useAuthQuery } from '../../Supabase/useFetchUser';
 import { useCart } from '../../Supabase/useCart';

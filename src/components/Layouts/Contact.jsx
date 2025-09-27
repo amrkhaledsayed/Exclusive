@@ -1,6 +1,6 @@
 import { IoIosSend, IoLogoInstagram, IoMdCall } from 'react-icons/io';
 import { LuMessageCircle, LuSend } from 'react-icons/lu';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom-dom';
 import { Button } from '../ui/Button';
 import { BsTwitterX } from 'react-icons/bs';
 import { Input } from '../ui/input';

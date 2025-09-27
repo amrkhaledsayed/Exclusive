@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import Skeleton from '@mui/material/Skeleton';
 

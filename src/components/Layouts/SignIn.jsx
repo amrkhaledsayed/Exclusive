@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Input } from '../ui/input';
 import { IoLockClosedOutline } from 'react-icons/io5';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 import { Loading } from '../ui/Loading';

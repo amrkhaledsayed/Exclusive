@@ -1,7 +1,7 @@
 import { Check, Lock, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { MdKeyboardBackspace } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoLockClosedOutline } from 'react-icons/io5';
 import { InputPassword } from '../ui/inputPassword';
 import { useTranslation } from 'react-i18next';

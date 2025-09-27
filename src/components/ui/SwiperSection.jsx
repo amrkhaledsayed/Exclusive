@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import { CarouselItem } from '../ui/carousel';
 
 import { forwardRef } from 'react';
@@ -12,6 +11,7 @@ import {
 } from './carousel';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom-dom';
 
 const SwiperSection = forwardRef(
   (

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaLock } from 'react-icons/fa6';
 import { Button } from './Button';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const NoUser = ({ title, message, to, btn }) => {
   const { t } = useTranslation();

@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Home, Heart, CircleUserRound, ShoppingCart, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const MenuDock = ({

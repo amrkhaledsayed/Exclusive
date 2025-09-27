@@ -1,90 +1,90 @@
-import { Link } from "react-router";
-import CountUp from "../common/CountUp";
-import CardInfo from "../ui/CardInfo";
-import CardPerson from "../ui/CardPerson";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import ServesSection from "../common/ServesSection";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { useTranslation } from "react-i18next";
-import clsx from "clsx";
+import { Link } from 'react-router-dom';
+import CountUp from '../common/CountUp';
+import CardInfo from '../ui/CardInfo';
+import CardPerson from '../ui/CardPerson';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import ServesSection from '../common/ServesSection';
+import { MdKeyboardArrowRight } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
 
 const About = () => {
   const { t, i18n } = useTranslation();
   const CardsInfo = [
     {
-      logo: "./Services0.svg",
-      des: "Sellers active on our site",
+      logo: './Services0.svg',
+      des: 'Sellers active on our site',
       from: 0,
       to: 13.5,
     },
     {
-      logo: "./Services01.svg",
-      des: "Monthly Product Sale",
+      logo: './Services01.svg',
+      des: 'Monthly Product Sale',
       from: 0,
       to: 33,
     },
     {
-      logo: "./Services02.svg",
-      des: "Customers active in our site",
+      logo: './Services02.svg',
+      des: 'Customers active in our site',
       from: 20,
       to: 45.5,
     },
     {
-      logo: "./Services03.svg",
-      des: "Annual gross sale in our site",
+      logo: './Services03.svg',
+      des: 'Annual gross sale in our site',
       from: 0,
       to: 25,
     },
   ];
   const teamMembers = [
     {
-      image: "./image 46.svg",
-      name: "Tom Cruise",
-      title: "Founder & Chairman",
+      image: './image 46.svg',
+      name: 'Tom Cruise',
+      title: 'Founder & Chairman',
     },
-    { image: "./image 48.svg", name: "Emma Watson", title: "Co-Founder" },
-    { image: "./image 46.svg", name: "Chris Evans", title: "Marketing Head" },
+    { image: './image 48.svg', name: 'Emma Watson', title: 'Co-Founder' },
+    { image: './image 46.svg', name: 'Chris Evans', title: 'Marketing Head' },
     {
-      image: "./image 48.svg",
-      name: "Scarlett Johansson",
-      title: "Lead Designer",
+      image: './image 48.svg',
+      name: 'Scarlett Johansson',
+      title: 'Lead Designer',
     },
     {
-      image: "./image 46.svg",
-      name: "Tom Cruise",
-      title: "Founder & Chairman",
+      image: './image 46.svg',
+      name: 'Tom Cruise',
+      title: 'Founder & Chairman',
     },
-    { image: "./image 48.svg", name: "Emma Watson", title: "Co-Founder" },
+    { image: './image 48.svg', name: 'Emma Watson', title: 'Co-Founder' },
   ];
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 pt-[80px]">
       <div className="mb-8 flex items-center text-[14px] font-normal">
         <Link to="/" className="text-gray-500">
-          {t("Home")}
+          {t('Home')}
         </Link>
         <MdKeyboardArrowRight
-          className={clsx("rotate-0", { "rotate-180": i18n.language === "ar" })}
+          className={clsx('rotate-0', { 'rotate-180': i18n.language === 'ar' })}
         />
-        <p className="text-gray-700">{t("About")}</p>
+        <p className="text-gray-700">{t('About')}</p>
       </div>
 
       <div className="flex flex-col items-center justify-between gap-[75px] lg:flex-row">
         <div className="flex flex-col gap-[24px] lg:w-1/2">
           <p className="text-[54px] leading-16 font-semibold">
-            {t("Our Story")}
+            {t('Our Story')}
           </p>
           <p className="text-[16px] leading-7 font-normal">
             {t(
-              `Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace with an active presence in Bangladesh. Supported by a wide range of tailored marketing, data, and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3 million customers across the region.`,
+              `Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace with an active presence in Bangladesh. Supported by a wide range of tailored marketing, data, and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3 million customers across the region.`
             )}
           </p>
 
           <p className="text-[16px] font-normal">
             {t(
-              `Exclusive has more than 1 Million products to offer, growing at a very fast pace. Exclusive offers a diverse assortment in categories ranging from consumer.`,
+              `Exclusive has more than 1 Million products to offer, growing at a very fast pace. Exclusive offers a diverse assortment in categories ranging from consumer.`
             )}
           </p>
         </div>
@@ -106,7 +106,7 @@ const About = () => {
               className="text-4xl font-extrabold text-gray-900 group-hover:text-white md:text-6xl"
             />
             <span className="text-4xl font-extrabold text-gray-900 group-hover:text-white md:text-6xl">
-              {t("K")}
+              {t('K')}
             </span>
           </CardInfo>
         ))}
@@ -115,15 +115,15 @@ const About = () => {
         <div className="container mx-auto">
           <div className="mb-16 text-center">
             <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-600">
-              {t("Our Team")}
+              {t('Our Team')}
             </div>
             <h2 className="mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-5xl">
-              {t("Meet Our")}{" "}
-              <span className="text-red-600">{t("Experts")}</span>
+              {t('Meet Our')}{' '}
+              <span className="text-red-600">{t('Experts')}</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-600">
               {t(
-                "Our dedicated team of professionals brings years of experience and passion to help you achieve your goals with excellence and innovation.",
+                'Our dedicated team of professionals brings years of experience and passion to help you achieve your goals with excellence and innovation.'
               )}
             </p>
           </div>
@@ -141,9 +141,9 @@ const About = () => {
             pagination={{
               clickable: true,
               bulletClass:
-                "swiper-pagination-bullet !w-4 rounded-xl !h-4 !bg-gray-400 !opacity-70 !mx-2",
+                'swiper-pagination-bullet !w-4 rounded-xl !h-4 !bg-gray-400 !opacity-70 !mx-2',
               bulletActiveClass:
-                "swiper-pagination-bullet-active rounded-xl !bg-red-500 !opacity-100 !scale-125",
+                'swiper-pagination-bullet-active rounded-xl !bg-red-500 !opacity-100 !scale-125',
             }}
             autoplay={{
               delay: 5000,
@@ -170,11 +170,11 @@ const About = () => {
             }}
             className="pb-16"
             style={{
-              overflow: "hidden",
-              maxWidth: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              overflow: 'hidden',
+              maxWidth: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             {teamMembers.map((member, index) => (

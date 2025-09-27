@@ -1,7 +1,7 @@
 import { FaPhoneAlt, FaUser } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { TbLockPassword } from 'react-icons/tb';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { useTranslation } from 'react-i18next';

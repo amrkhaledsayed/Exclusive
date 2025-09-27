@@ -2,7 +2,7 @@ import { Rating } from '@mui/material';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 import { FaRegUserCircle } from 'react-icons/fa';

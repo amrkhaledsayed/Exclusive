@@ -11,7 +11,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { IoCloseSharp } from 'react-icons/io5';
 import { CgProfile } from 'react-icons/cg';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import SelectVariants from './List';
 
 import {

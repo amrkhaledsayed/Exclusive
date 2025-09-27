@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import useFetchData from '../Hooks/useFetchData';
 import { useEffect } from 'react';
 import Item from '../ui/Item';

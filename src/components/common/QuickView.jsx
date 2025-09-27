@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Rating, Skeleton } from '@mui/material';
 import { FaRegHeart } from 'react-icons/fa6';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 export const QuickView = ({
   open,

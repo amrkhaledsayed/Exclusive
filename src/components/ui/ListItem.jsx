@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router";
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export function ListItem({ title, description, href, image, price }) {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ export function ListItem({ title, description, href, image, price }) {
       {image && (
         <div className="flex w-full justify-center">
           <img
-            src={image || "/placeholder.svg"}
+            src={image || '/placeholder.svg'}
             alt={title}
             className="h-32 w-32 rounded-md object-cover transition-all duration-300 ease-in-out hover:scale-105"
           />

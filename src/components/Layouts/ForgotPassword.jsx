@@ -4,7 +4,7 @@ import { MdEmail } from 'react-icons/md';
 import { ArrowLeft, Mail, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import supabase from '@/Supabase/supabase-client';
 import { useState } from 'react';
 import toast from 'react-hot-toast';

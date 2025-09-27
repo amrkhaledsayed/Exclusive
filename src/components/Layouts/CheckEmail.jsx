@@ -3,7 +3,7 @@ import {
   MdOutlineSecurity,
   MdOutlineVerified,
 } from 'react-icons/md';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { unstable_OneTimePasswordField as OneTimePasswordField } from 'radix-ui';
 import { Button } from '../ui/Button';
