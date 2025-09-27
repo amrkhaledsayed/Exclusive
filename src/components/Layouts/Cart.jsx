@@ -10,7 +10,7 @@ import { Loading } from '../ui/Loading';
 import { AppContext } from '@/utils/context';
 
 const Cart = () => {
-  const { user, cartList } = React.useContext(AppContext);
+  const { user, cartList, clearData } = React.useContext(AppContext);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -112,8 +112,12 @@ const Cart = () => {
                 </div>
 
                 <div className="mt-6 flex justify-between">
-                  <Button variant="destructive">{t('Return To Shop')}</Button>
-                  <Button variant="outline">{t('Update Cart')}</Button>
+                  <Link to="/">
+                    <Button variant="destructive">{t('Return To Shop')}</Button>
+                  </Link>
+                  <Button onClick={clearData} variant="outline">
+                    {t('Update Cart')}
+                  </Button>
                 </div>
               </>
             )}
