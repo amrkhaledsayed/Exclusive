@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRegHeart, FaRegStar, FaUserCircle } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { CiHeart, CiLogout, CiSearch, CiShoppingCart } from 'react-icons/ci';
