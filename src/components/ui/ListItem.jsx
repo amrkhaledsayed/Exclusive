@@ -22,7 +22,7 @@ export function ListItem({ title, description, href, image, price }) {
             className="h-32 w-32 rounded-md object-cover transition-all duration-300 ease-in-out hover:scale-105"
           />
           {!loaded && (
-            <div className="flex w-full h-full items-center justify-center bg-gray-200">
+            <div className="absolute inset-0 flex items-center justify-center bg-white">
               <TrophySpin color="#ff1010" size="medium" text="" textColor="" />
             </div>
           )}
