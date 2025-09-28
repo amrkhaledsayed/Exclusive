@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { TrophySpin } from 'react-loading-indicators';
 
 export function ListItem({ title, description, href, image, price }) {
   const { t } = useTranslation();
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <Link
@@ -13,9 +16,16 @@ export function ListItem({ title, description, href, image, price }) {
         <div className="flex w-full justify-center">
           <img
             src={image || '/placeholder.svg'}
+            onLoad={() => setLoaded(true)}
+            loading="lazy"
             alt={title}
             className="h-32 w-32 rounded-md object-cover transition-all duration-300 ease-in-out hover:scale-105"
           />
+          {!loaded && (
+            <div className="flex items-center justify-center bg-gray-200">
+              <TrophySpin color="#ff1010" size="medium" text="" textColor="" />
+            </div>
+          )}
         </div>
       )}
       <div className="flex w-full flex-col gap-2">

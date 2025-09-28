@@ -118,7 +118,7 @@ const Item = (props) => {
                   size="medium"
                   text=""
                   textColor=""
-                />{' '}
+                />
               </div>
             )}
           </Link>
