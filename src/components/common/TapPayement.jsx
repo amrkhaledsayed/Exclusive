@@ -33,9 +33,11 @@ const TapPayement = ({ CardsList }) => {
       {CardsList.length === 0 ? (
         <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
           <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
-            <CreditCard size="3rem" className="text-red" />
+            <CreditCard className="text-red md:w-[3rem] md:h-[3rem] w-[2rem] h-[2rem]" />
           </div>
-          <p className="text-lg font-semibold">{t(`No Payement added yet`)}</p>
+          <p className="md:text-lg text-[0.8rem] font-semibold">
+            {t(`No Payement added yet`)}
+          </p>
         </div>
       ) : (
         <div className="mb-6 grid grid-cols-1 content-center justify-items-center gap-4 px-5 pt-5 pb-5 md:grid-cols-2 md:px-11 md:py-6 md:pb-11">

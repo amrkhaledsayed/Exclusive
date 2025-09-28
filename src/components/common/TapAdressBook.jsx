@@ -49,9 +49,11 @@ const TapAdressBook = ({
       {addressList.length === 0 ? (
         <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
           <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
-            <MapPinHouse size="3rem" className="text-red" />
+            <MapPinHouse className="text-red md:w-[3rem] md:h-[3rem] w-[2rem] h-[2rem]" />
           </div>
-          <p className="text-lg font-semibold">{t(`No Address added yet`)}</p>
+          <p className="md:text-lg text-[0.8rem] font-semibold">
+            {t(`No Address added yet`)}
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 px-5 pt-5 pb-5 md:px-11 md:py-6 md:pb-11">
