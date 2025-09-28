@@ -59,7 +59,7 @@ export default function SignUp() {
                 {t('First Name')}
               </label>
               <div className="relative flex flex-col gap-0.5">
-                <FaUser className="absolute top-1/2 left-4 translate-y-[-50%]" />
+                <FaUser className="absolute top-1/2 rtl:left-4 ltr:right-4 translate-y-[-50%]" />
                 <Input
                   type="text"
                   id="firstName"
@@ -83,7 +83,7 @@ export default function SignUp() {
                 {t('Last Name')}
               </label>
               <div className="relative flex-1">
-                <FaUser className="absolute top-1/2 left-4 translate-y-[-50%]" />
+                <FaUser className="absolute top-1/2 rtl:left-4 ltr:right-4 translate-y-[-50%]" />
 
                 <Input
                   type="text"
@@ -109,7 +109,7 @@ export default function SignUp() {
               {t('Phone Number')}
             </label>
             <div className="relative flex-1">
-              <FaPhoneAlt className="absolute top-1/2 left-4 translate-y-[-50%]" />
+              <FaPhoneAlt className="absolute top-1/2 rtl:left-4 ltr:right-4 translate-y-[-50%]" />
               <Input
                 type="text"
                 id="phoneNumber"
@@ -133,7 +133,7 @@ export default function SignUp() {
               {t('Email Address')}
             </label>
             <div className="relative">
-              <MdEmail className="absolute top-1/2 left-4 translate-y-[-50%]" />
+              <MdEmail className="absolute top-1/2 rtl:left-4 ltr:right-4 translate-y-[-50%]" />
               <Input
                 type="email"
                 id="email"
@@ -155,7 +155,7 @@ export default function SignUp() {
               {t('Password')}
             </label>
             <div className="relative">
-              <TbLockPassword className="absolute top-1/2 left-4 translate-y-[-50%]" />
+              <TbLockPassword className="absolute top-1/2 rtl:left-4 ltr:right-4 translate-y-[-50%]" />
               <Input
                 type="password"
                 id="password"

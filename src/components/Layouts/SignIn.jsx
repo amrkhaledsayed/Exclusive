@@ -60,7 +60,7 @@ export default function SignIn() {
             >
               {t('Email Address')}
             </label>
-            <MdEmail className="absolute top-1/2 left-4 -translate-y-[-50%]" />
+            <MdEmail className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[-50%]" />
             <Input
               type="email"
               id="email"
@@ -77,7 +77,7 @@ export default function SignIn() {
             >
               {t('Password')}
             </label>
-            <TbLockPassword className="absolute top-1/2 left-4 -translate-y-[-50%]" />
+            <TbLockPassword className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[-50%]" />
             <Input
               type="password"
               id="password"
