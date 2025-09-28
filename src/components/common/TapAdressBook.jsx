@@ -16,6 +16,7 @@ import { EditAddress } from './EditAddress';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { Button } from '../ui/Button';
 import React from 'react';
+import { MapPinHouse } from 'lucide-react';
 
 const TapAdressBook = ({
   userId,
@@ -24,7 +25,16 @@ const TapAdressBook = ({
   handelDefault,
 }) => {
   const { t } = useTranslation();
-
+  if (!addressList) {
+    return (
+      <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
+        <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
+          <MapPinHouse size="3rem" className="text-red" />
+        </div>
+        <p className="text-lg font-semibold">{t(`No Address added yet`)}</p>
+      </div>
+    );
+  }
   return (
     <>
       <div className="border-b-1 border-b-red-100">
