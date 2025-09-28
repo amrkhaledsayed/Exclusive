@@ -23,7 +23,7 @@ export function ListItem({ title, description, href, image, price }) {
           {t(`${title}`)}
         </h3>
         <p className="line-clamp-3 text-sm leading-relaxed text-gray-600">
-          {t(`${description}`)}
+          {t(`description.${description}`)}
         </p>
         {price && (
           <div className="mt-auto border-t border-gray-100 pt-3">
