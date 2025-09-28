@@ -20,10 +20,10 @@ export function ListItem({ title, description, href, image, price }) {
       )}
       <div className="flex w-full flex-col gap-2">
         <h3 className="text-lg leading-tight font-semibold text-gray-900">
-          {t(`titles.${title}`)}
+          {t(`${title}`)}
         </h3>
         <p className="line-clamp-3 text-sm leading-relaxed text-gray-600">
-          {t(`description.${description}`)}
+          {t(`${description}`)}
         </p>
         {price && (
           <div className="mt-auto border-t border-gray-100 pt-3">
