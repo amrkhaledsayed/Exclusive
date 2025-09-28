@@ -101,7 +101,7 @@ export const AddCard = () => {
                     })}
                   />
                   {errors.NameOwner && (
-                    <p className="text-red text-[12px]">
+                    <p className="text-red text-[12px] text-nowrap">
                       {errors.NameOwner.message}
                     </p>
                   )}
@@ -215,10 +215,10 @@ export const AddCard = () => {
                     })}
                     maxLength={3}
                   />
+                  {errors.CVV && (
+                    <p className="text-red text-[12px]">{errors.CVV.message}</p>
+                  )}
                 </div>
-                {errors.CVV && (
-                  <p className="text-red text-[12px]">{errors.CVV.message}</p>
-                )}
               </div>
 
               <Button type="submit" variant="destructive" className="w-full">
