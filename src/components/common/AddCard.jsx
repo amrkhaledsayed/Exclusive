@@ -91,19 +91,21 @@ export const AddCard = () => {
               onSubmit={handleSubmit(handleAddVisa)}
             >
               <div className="flex gap-3 flex-col sm:flex-row">
-                <TextField
-                  className="w-full border-1 border-gray-300 bg-white text-[15px]"
-                  placeholder={t('Name Owner')}
-                  variant="outlined"
-                  {...register('NameOwner', {
-                    required: t('Name Owner is required.'),
-                  })}
-                />
-                {errors.NameOwner && (
-                  <p className="text-red text-[12px]">
-                    {errors.NameOwner.message}
-                  </p>
-                )}
+                <div className="flex flex-col items-start gap-2">
+                  <TextField
+                    className="w-full border-1 border-gray-300 bg-white text-[15px]"
+                    placeholder={t('Name Owner')}
+                    variant="outlined"
+                    {...register('NameOwner', {
+                      required: t('Name Owner is required.'),
+                    })}
+                  />
+                  {errors.NameOwner && (
+                    <p className="text-red text-[12px]">
+                      {errors.NameOwner.message}
+                    </p>
+                  )}
+                </div>
                 <Controller
                   name="option"
                   control={control}
@@ -213,10 +215,10 @@ export const AddCard = () => {
                     })}
                     maxLength={3}
                   />
-                  {errors.CVV && (
-                    <p className="text-red text-[12px]">{errors.CVV.message}</p>
-                  )}
                 </div>
+                {errors.CVV && (
+                  <p className="text-red text-[12px]">{errors.CVV.message}</p>
+                )}
               </div>
 
               <Button type="submit" variant="destructive" className="w-full">
