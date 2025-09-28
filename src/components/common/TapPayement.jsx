@@ -9,16 +9,7 @@ import { CreditCard } from 'lucide-react';
 
 const TapPayement = ({ CardsList }) => {
   const { t } = useTranslation();
-  if (CardsList.length === 0) {
-    return (
-      <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
-        <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
-          <CreditCard size="3rem" className="text-red" />
-        </div>
-        <p className="text-lg font-semibold">{t(`No Payement added yet`)}</p>
-      </div>
-    );
-  }
+
   return (
     <div className="font-sans">
       <div className="border-b-1 border-b-red-100">
@@ -39,51 +30,59 @@ const TapPayement = ({ CardsList }) => {
           <AddCard />
         </div>
       </div>
-      <div className="mb-6 grid grid-cols-1 content-center justify-items-center gap-4 px-5 pt-5 pb-5 md:grid-cols-2 md:px-11 md:py-6 md:pb-11">
-        {CardsList.length === 0 && (
-          <p className="text-gray-600">
-            {t('You haven’t added any payment methods yet.')}
-          </p>
-        )}
-        {CardsList.map((card, index) => (
-          <div
-            key={index}
-            className="flip-card font-inter h-[11rem] w-full max-w-[310px] sm:w-[19rem]"
-          >
-            <div className="flip-card-inner">
-              <div
-                className={clsx(
-                  'flip-card-front bg-repeat-space px-3',
-                  card.Card_type === 'payPal' &&
-                    'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
-                  card.Card_type === 'visa' &&
-                    'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
-                  card.Card_type === 'mastercard' &&
-                    'bg-[url("/Zi6v09P-mgur.png")] bg-center',
-                  card.Card_type === 'vodafonecash' &&
-                    'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
-                )}
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <svg
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    width="30px"
-                    height="30px"
-                    viewBox="0 0 50 50"
-                    xmlSpace="preserve"
-                  >
-                    <image
-                      id="image0"
-                      width={50}
-                      height={50}
-                      x={0}
-                      y={0}
-                      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+      {CardsList.length === 0 ? (
+        <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
+          <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
+            <CreditCard size="3rem" className="text-red" />
+          </div>
+          <p className="text-lg font-semibold">{t(`No Payement added yet`)}</p>
+        </div>
+      ) : (
+        <div className="mb-6 grid grid-cols-1 content-center justify-items-center gap-4 px-5 pt-5 pb-5 md:grid-cols-2 md:px-11 md:py-6 md:pb-11">
+          {CardsList.length === 0 && (
+            <p className="text-gray-600">
+              {t('You haven’t added any payment methods yet.')}
+            </p>
+          )}
+          {CardsList.map((card, index) => (
+            <div
+              key={index}
+              className="flip-card font-inter h-[11rem] w-full max-w-[310px] sm:w-[19rem]"
+            >
+              <div className="flip-card-inner">
+                <div
+                  className={clsx(
+                    'flip-card-front bg-repeat-space px-3',
+                    card.Card_type === 'payPal' &&
+                      'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
+                    card.Card_type === 'visa' &&
+                      'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
+                    card.Card_type === 'mastercard' &&
+                      'bg-[url("/Zi6v09P-mgur.png")] bg-center',
+                    card.Card_type === 'vodafonecash' &&
+                      'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
+                  )}
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    <svg
+                      version="1.1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      width="30px"
+                      height="30px"
+                      viewBox="0 0 50 50"
+                      xmlSpace="preserve"
+                    >
+                      <image
+                        id="image0"
+                        width={50}
+                        height={50}
+                        x={0}
+                        y={0}
+                        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
                               AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOY
                               fEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSW
                               ekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GS
@@ -109,27 +108,27 @@ const TapPayement = ({ CardsList }) => {
                               cmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
                               MjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAy
                               LTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg=="
-                    />
-                  </svg>
-                  <svg
-                    version="1.1"
-                    id="Layer_1"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    width="20px"
-                    height="20px"
-                    viewBox="0 0 50 50"
-                    xmlSpace="preserve"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <image
-                      id="image0"
-                      width={50}
-                      height={50}
-                      x={0}
-                      y={0}
-                      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                      />
+                    </svg>
+                    <svg
+                      version="1.1"
+                      id="Layer_1"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 50 50"
+                      xmlSpace="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <image
+                        id="image0"
+                        width={50}
+                        height={50}
+                        x={0}
+                        y={0}
+                        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
                               AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZ
                               cwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQf
                               lGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/F
@@ -149,91 +148,92 @@ const TapPayement = ({ CardsList }) => {
                               MTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5
                               OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1Nisw
                               MDowMIXeN6gAAAAASUVORK5CYII="
-                    />
-                  </svg>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-col items-start gap-1">
-                    <p className="font-mono text-[17px] md:text-lg">
-                      {card.Card_number}
-                    </p>
-                    <div className="flex w-full items-center justify-between">
-                      <p className="text-[10px] font-bold tracking-wide text-gray-400">
-                        {t('VALID THRU')}
-                      </p>
-                      <p className="date_8264">{card.Expiry_date}</p>
-                    </div>
-                    <p className="name tracking-[0.15rem]">
-                      {card.Card_owner.toUpperCase()}
-                    </p>
-                  </div>
-                  {card.Card_type === 'mastercard' && (
-                    <svg
-                      className="logo"
-                      xmlns="http://www.w3.org/2000/svg"
-                      x="0px"
-                      y="0px"
-                      width={36}
-                      height={36}
-                      viewBox="0 0 48 48"
-                    >
-                      <path
-                        fill="#ff9800"
-                        d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z"
-                      />
-                      <path
-                        fill="#d50000"
-                        d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z"
-                      />
-                      <path
-                        fill="#ff3d00"
-                        d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z"
                       />
                     </svg>
-                  )}
-                  {card.Card_type === 'visa' && (
-                    <RiVisaLine className="logo self-end" size={36} />
-                  )}
-                  {card.Card_type === 'vodafonecash' && (
-                    <img
-                      src="/vodafone.png"
-                      className="logo self-end"
-                      size={36}
-                    />
-                  )}
-                  {card.Card_type === 'Amex' && (
-                    <GrAmex className="logo self-end" size={36} />
-                  )}
-                  {card.Card_type === 'payPal' && (
-                    <FaPaypal className="self-end" size={36} />
-                  )}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col items-start gap-1">
+                      <p className="font-mono text-[17px] md:text-lg">
+                        {card.Card_number}
+                      </p>
+                      <div className="flex w-full items-center justify-between">
+                        <p className="text-[10px] font-bold tracking-wide text-gray-400">
+                          {t('VALID THRU')}
+                        </p>
+                        <p className="date_8264">{card.Expiry_date}</p>
+                      </div>
+                      <p className="name tracking-[0.15rem]">
+                        {card.Card_owner.toUpperCase()}
+                      </p>
+                    </div>
+                    {card.Card_type === 'mastercard' && (
+                      <svg
+                        className="logo"
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width={36}
+                        height={36}
+                        viewBox="0 0 48 48"
+                      >
+                        <path
+                          fill="#ff9800"
+                          d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z"
+                        />
+                        <path
+                          fill="#d50000"
+                          d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z"
+                        />
+                        <path
+                          fill="#ff3d00"
+                          d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z"
+                        />
+                      </svg>
+                    )}
+                    {card.Card_type === 'visa' && (
+                      <RiVisaLine className="logo self-end" size={36} />
+                    )}
+                    {card.Card_type === 'vodafonecash' && (
+                      <img
+                        src="/vodafone.png"
+                        className="logo self-end"
+                        size={36}
+                      />
+                    )}
+                    {card.Card_type === 'Amex' && (
+                      <GrAmex className="logo self-end" size={36} />
+                    )}
+                    {card.Card_type === 'payPal' && (
+                      <FaPaypal className="self-end" size={36} />
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div
-                className={clsx(
-                  'flip-card-back',
-                  card.Card_type === 'payPal' &&
-                    'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
-                  card.Card_type === 'visa' &&
-                    'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
-                  card.Card_type === 'mastercard' &&
-                    'bg-[url("/Zi6v09P-mgur.png")] bg-center',
-                  card.Card_type === 'vodafonecash' &&
-                    'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
-                )}
-              >
-                <div className="strip" />
-                <div className="mt-5 flex items-center justify-between gap-5">
-                  <div className="mstrip" />
-                  <div className="sstrip">
-                    <p className="code">{card.CVV2}</p>
+                <div
+                  className={clsx(
+                    'flip-card-back',
+                    card.Card_type === 'payPal' &&
+                      'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
+                    card.Card_type === 'visa' &&
+                      'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
+                    card.Card_type === 'mastercard' &&
+                      'bg-[url("/Zi6v09P-mgur.png")] bg-center',
+                    card.Card_type === 'vodafonecash' &&
+                      'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
+                  )}
+                >
+                  <div className="strip" />
+                  <div className="mt-5 flex items-center justify-between gap-5">
+                    <div className="mstrip" />
+                    <div className="sstrip">
+                      <p className="code">{card.CVV2}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
