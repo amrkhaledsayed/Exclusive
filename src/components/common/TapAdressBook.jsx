@@ -25,7 +25,7 @@ const TapAdressBook = ({
   handelDefault,
 }) => {
   const { t } = useTranslation();
-  if (!addressList) {
+  if (addressList.length === 0) {
     return (
       <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
         <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">

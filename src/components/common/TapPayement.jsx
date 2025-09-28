@@ -9,7 +9,7 @@ import { CreditCard } from 'lucide-react';
 
 const TapPayement = ({ CardsList }) => {
   const { t } = useTranslation();
-  if (!CardsList) {
+  if (CardsList.length === 0) {
     return (
       <div className="mx-auto flex max-w-[500px] flex-col items-center justify-center gap-5 py-20">
         <div className="w-fit rounded-[14px] border-1 border-gray-300 p-5">
@@ -55,11 +55,11 @@ const TapPayement = ({ CardsList }) => {
                 className={clsx(
                   'flip-card-front bg-repeat-space px-3',
                   card.Card_type === 'payPal' &&
-                    'glass bg-[url("./freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
+                    'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
                   card.Card_type === 'visa' &&
                     'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
                   card.Card_type === 'mastercard' &&
-                    'bg-[url("./Zi6v09P-mgur.png")] bg-center',
+                    'bg-[url("/Zi6v09P-mgur.png")] bg-center',
                   card.Card_type === 'vodafonecash' &&
                     'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
                 )}
@@ -213,11 +213,11 @@ const TapPayement = ({ CardsList }) => {
                 className={clsx(
                   'flip-card-back',
                   card.Card_type === 'payPal' &&
-                    'glass bg-[url("./freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
+                    'glass bg-[url("/freepik__retouch__70372.png")] bg-cover bg-center bg-no-repeat shadow-lg backdrop-blur-sm',
                   card.Card_type === 'visa' &&
                     'bg-[url(https://i.ibb.co/LPLv5MD/Payment-Card-01.jpg)]',
                   card.Card_type === 'mastercard' &&
-                    'bg-[url("./Zi6v09P-mgur.png")] bg-center',
+                    'bg-[url("/Zi6v09P-mgur.png")] bg-center',
                   card.Card_type === 'vodafonecash' &&
                     'bg-[#ee2222a2] bg-center backdrop-blur-2xl'
                 )}
