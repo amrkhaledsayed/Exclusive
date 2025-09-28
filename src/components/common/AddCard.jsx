@@ -99,11 +99,6 @@ export const AddCard = () => {
                     required: t('Name Owner is required.'),
                   })}
                 />
-                {errors.NameOwner && (
-                  <p className="text-red text-[12px]">
-                    {errors.NameOwner.message}
-                  </p>
-                )}
                 <Controller
                   name="option"
                   control={control}
@@ -135,7 +130,12 @@ export const AddCard = () => {
                       </SelectContent>
                     </Select>
                   )}
-                />
+                />{' '}
+                {errors.NameOwner && (
+                  <p className="text-red text-[12px]">
+                    {errors.NameOwner.message}
+                  </p>
+                )}
               </div>
               <div>
                 <div className="flex h-[56px] items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-[#fff] p-1 text-[18px]">
@@ -213,10 +213,10 @@ export const AddCard = () => {
                     })}
                     maxLength={3}
                   />
-                  {errors.CVV && (
-                    <p className="text-red text-[12px]">{errors.CVV.message}</p>
-                  )}
-                </div>
+                </div>{' '}
+                {errors.CVV && (
+                  <p className="text-red text-[12px]">{errors.CVV.message}</p>
+                )}
               </div>
 
               <Button type="submit" variant="destructive" className="w-full">
