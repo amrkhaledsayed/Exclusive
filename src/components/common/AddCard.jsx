@@ -90,7 +90,7 @@ export const AddCard = () => {
               className="flex flex-col gap-5"
               onSubmit={handleSubmit(handleAddVisa)}
             >
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-col sm:flex-row">
                 <TextField
                   className="w-full border-1 border-gray-300 bg-white text-[15px]"
                   placeholder={t('Name Owner')}
@@ -99,6 +99,11 @@ export const AddCard = () => {
                     required: t('Name Owner is required.'),
                   })}
                 />
+                {errors.NameOwner && (
+                  <p className="text-red text-[12px]">
+                    {errors.NameOwner.message}
+                  </p>
+                )}
                 <Controller
                   name="option"
                   control={control}
@@ -130,12 +135,7 @@ export const AddCard = () => {
                       </SelectContent>
                     </Select>
                   )}
-                />{' '}
-                {errors.NameOwner && (
-                  <p className="text-red text-[12px]">
-                    {errors.NameOwner.message}
-                  </p>
-                )}
+                />
               </div>
               <div>
                 <div className="flex h-[56px] items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-[#fff] p-1 text-[18px]">
@@ -172,7 +172,7 @@ export const AddCard = () => {
                 )}
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-col sm:flex-row">
                 <Controller
                   name="date"
                   control={control}
@@ -201,7 +201,7 @@ export const AddCard = () => {
                     </LocalizationProvider>
                   )}
                 />
-                <div className="w-1/3">
+                <div className="sm:w-1/3 w-full">
                   <TextField
                     className="h-[56px] w-full rounded-[2px] border-1 border-gray-300 bg-white text-[15px]"
                     placeholder={t('CVV')}
@@ -213,10 +213,10 @@ export const AddCard = () => {
                     })}
                     maxLength={3}
                   />
-                </div>{' '}
-                {errors.CVV && (
-                  <p className="text-red text-[12px]">{errors.CVV.message}</p>
-                )}
+                  {errors.CVV && (
+                    <p className="text-red text-[12px]">{errors.CVV.message}</p>
+                  )}
+                </div>
               </div>
 
               <Button type="submit" variant="destructive" className="w-full">
