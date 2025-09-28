@@ -162,7 +162,7 @@ const Item = (props) => {
 
         <div className="from-card/80 to-card h-full space-y-4 bg-gradient-to-b p-6">
           <h3 className="text-card-foreground group-hover:text-primary line-clamp-1 h-full text-xl leading-tight font-bold transition-colors duration-300">
-            {t(`titles.${productName}`)}{' '}
+            {t(`titles.${productName}`, { defaultValue: productName })}{' '}
           </h3>
 
           <div className="flex items-center gap-3">

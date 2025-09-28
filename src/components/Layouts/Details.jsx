@@ -118,9 +118,7 @@ const Details = () => {
         rating: product?.rating,
         reviews: product?.reviews?.length,
       },
-      {
-       
-      }
+      {}
     );
   };
 
@@ -204,7 +202,7 @@ const Details = () => {
           <MdKeyboardArrowRight />
 
           <p className="ml-1 text-nowrap text-gray-700 md:text-lg">
-            {t(`titles.${product?.title}`)}
+            {t(`titles.${product?.title}`, { defaultValue: product.title })}
           </p>
         </div>
         <div className="flex flex-col items-start justify-between gap-[70px] lg:flex-row">
@@ -237,7 +235,7 @@ const Details = () => {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2.5 border-b-1 border-b-gray-300 pb-3">
               <p className="font-heading mb-2 text-4xl font-semibold text-balance text-gray-800">
-                {t(`titles.${product?.title}`)}
+                {t(`titles.${product?.title}`, { defaultValue: product.title })}
               </p>
               <div className="flex gap-2">
                 <div className="flex h-fit shrink-0 items-center gap-0.5 overflow-auto scroll-smooth ltr:border-r-1 ltr:border-gray-400 ltr:pr-2 rtl:border-l-1 rtl:border-gray-400 rtl:pl-2">
@@ -255,7 +253,9 @@ const Details = () => {
                   </p>
                 </div>
                 <Badge className="bg-red text-[13px] leading-5 font-medium text-nowrap text-white">
-                  {t(`${product?.availabilityStatus}`)}
+                  {t(`${product?.availabilityStatus}`, {
+                    defaultValue: product.availabilityStatus,
+                  })}
                 </Badge>
               </div>
               <div className="flex items-center gap-3 text-lg font-medium rtl:flex-row-reverse rtl:justify-end">
@@ -280,7 +280,9 @@ const Details = () => {
                 </p>
               </div>
               <p className="text-foreground font-body mb-6 leading-relaxed">
-                {t(`description.${product?.description}`)}
+                {t(`description.${product?.description}`, {
+                  defaultValue: product.description,
+                })}
               </p>
             </div>
             <div className="flex flex-col gap-[24px]">

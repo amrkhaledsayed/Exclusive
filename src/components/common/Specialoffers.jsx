@@ -12,7 +12,7 @@ const SpecialOffers = () => {
   return (
     <div className="mt-[40px] w-full bg-black">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center px-6 py-12 md:flex-row md:px-12 md:py-16 lg:px-16">
-        <div className="flex flex-[0_0_auto] flex-col items-start gap-6 text-center md:items-start md:gap-8 md:text-left lg:gap-12">
+        <div className="flex  flex-col items-start gap-6 text-center md:items-start md:gap-8 md:text-left lg:gap-12">
           <p className="text-sm font-semibold text-[#00FF66] md:text-base">
             {t('Categories')}
           </p>
