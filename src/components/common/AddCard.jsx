@@ -57,7 +57,7 @@ const AddCard = () => {
   const handleAddVisa = (data) => {
     const visaInfo = {
       user_id: user?.id,
-      Card_number: cardNumber,
+      Card_number: data.cardNumber,
       Card_owner: data.NameOwner,
       Expiry_date: data.date ? data.date.format('MM/YY') : null,
       CVV2: data.CVV,
@@ -155,18 +155,17 @@ const AddCard = () => {
                   <Controller
                     name="cardNumber"
                     control={control}
-                    rules={{ required: t('Card Number is required.') }}
+                    rules={{ required: 'Card Number is required' }}
                     render={({ field }) => (
                       <TextField
-                        placeholder={t('0000 0000 0000 0000')}
                         {...field}
+                        placeholder="0000 0000 0000 0000"
                         value={field.value || ''}
                         onChange={(e) => {
                           const formatted = formatEvery4(e.target.value);
                           field.onChange(formatted);
                         }}
                         inputProps={{ maxLength: 19 }}
-                        type="text"
                         className="h-full w-full rounded-[2px] border-1 border-gray-300 bg-white pl-2 text-sm font-semibold caret-orange-500 outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                       />
                     )}
