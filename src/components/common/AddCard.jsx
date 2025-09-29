@@ -160,6 +160,9 @@ const AddCard = () => {
                       <TextField
                         placeholder={t('0000 0000 0000 0000')}
                         {...field}
+                        {...register('cardNumber', {
+                          required: t('cardNumber is required.'),
+                        })}
                         value={field.value || ''}
                         onChange={(e) => {
                           const formatted = formatEvery4(e.target.value);
