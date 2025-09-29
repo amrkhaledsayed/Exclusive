@@ -4,7 +4,7 @@ function ErrorPage() {
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
       <img
-        src="./404_error_lost_in_space-removebg-preview.webpf"
+        src="/404_error_lost_in_space-removebg-preview.webp"
         loading="lazy"
         alt="Error page"
       />
