@@ -1,14 +1,15 @@
 import clsx from 'clsx';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CiLocationOn, CiLock } from 'react-icons/ci';
 import { FiUser } from 'react-icons/fi';
 import { MdPayment } from 'react-icons/md';
 
-export const SwitchButtonsManage = ({ activeTab, setActiveTab }) => {
+const SwitchButtonsManage = ({ activeTab, setActiveTab }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full rounded-[8px] border-1 border-gray-100 bg-white p-5 drop-shadow-xl lg:w-[334px]">
+    <div className="w-full rounded-[8px] border-1 border-gray-100 bg-white p-5 drop-shadow-xl lg:w-[400px]">
       <div className="flex w-full flex-col gap-4">
         <p className="text-[16px] font-medium">{t('Manage My Account')}</p>
         <div className="flex w-full flex-col items-start gap-5 rounded-md pl-5">
@@ -69,3 +70,4 @@ export const SwitchButtonsManage = ({ activeTab, setActiveTab }) => {
     </div>
   );
 };
+export default React.memo(SwitchButtonsManage);

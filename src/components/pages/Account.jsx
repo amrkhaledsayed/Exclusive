@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
 import { useAddress } from '@/Supabase/useAddress';
-import { SwitchButtonsManage } from '../common/SwitchButtonsManage';
+import SwitchButtonsManage from '../common/SwitchButtonsManage';
 import TapAccount from '../common/TapAccount';
 import TapChangePassword from '../common/TapChangePassword';
 import TapAdressBook from '../common/TapAdressBook';
