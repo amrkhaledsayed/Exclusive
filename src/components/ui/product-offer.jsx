@@ -24,7 +24,10 @@ const ProductOffer = (props) => {
           </p>
         </div>
 
-        <h3 className="max-w-sm text-2xl leading-tight font-bold md:max-w-md md:text-3xl md:leading-tight lg:text-4xl lg:leading-tight xl:text-5xl xl:leading-tight">
+        <h3
+          aria-label={t(`${titleDiscount}`)}
+          className="max-w-sm text-2xl leading-tight font-bold md:max-w-md md:text-3xl md:leading-tight lg:text-4xl lg:leading-tight xl:text-5xl xl:leading-tight"
+        >
           {t(`${titleDiscount}`)}
         </h3>
 
