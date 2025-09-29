@@ -12,7 +12,6 @@ import { CiLocationOn } from 'react-icons/ci';
 import { IoHomeOutline } from 'react-icons/io5';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPhoneAlt } from 'react-icons/fa';
-import { EditAddress } from './EditAddress';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { Button } from '../ui/Button';
 import React from 'react';
