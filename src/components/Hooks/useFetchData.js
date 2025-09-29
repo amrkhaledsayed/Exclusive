@@ -1,8 +1,7 @@
 import { useCallback, useState, useRef } from 'react';
 
-// Cache عام خارج الـ component
 const globalCache = new Map();
-const CACHE_DURATION = 5 * 60 * 1000; // 5 دقائق
+const CACHE_DURATION = 5 * 60 * 1000;
 
 const useFetchData = ({ limit, skip = 0, category, allProduct, search }) => {
   const [products, setProducts] = useState([]);
@@ -26,7 +25,6 @@ const useFetchData = ({ limit, skip = 0, category, allProduct, search }) => {
         url = `https://dummyjson.com/products/search?q=${search}`;
       else url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
 
-      // ✅ تحقق من الـ cache
       const cached = globalCache.get(url);
       if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
         const newProducts = cached.data.products || [];
@@ -44,10 +42,8 @@ const useFetchData = ({ limit, skip = 0, category, allProduct, search }) => {
         return;
       }
 
-      // مسح cache منتهي
       if (cached) globalCache.delete(url);
 
-      // ✅ تحقق من pending requests
       if (pendingRequests.current.has(url)) {
         return pendingRequests.current.get(url);
       }
@@ -59,7 +55,6 @@ const useFetchData = ({ limit, skip = 0, category, allProduct, search }) => {
           const response = await fetch(url, { signal: controller.signal });
           const data = await response.json();
 
-          // ✅ حفظ في الـ cache
           globalCache.set(url, {
             data,
             timestamp: Date.now(),
