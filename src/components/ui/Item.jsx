@@ -112,18 +112,17 @@ const Item = (props) => {
                 onLoad={() => setLoaded(true)}
                 loading="lazy"
                 alt={productName}
+                width="237.5"
+                height="237.5"
                 fetchpriority="low"
-                className="h-full max-h-[280px] w-full max-w-[280px] object-cover transition-all duration-700 group-hover:scale-110"
+                className={`h-full max-h-[280px] w-full max-w-[280px] object-cover transition-all duration-700 group-hover:scale-110 
+      ${loaded ? 'opacity-100' : 'opacity-0'}`}
               />
             )}
+
             {!loaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                <TrophySpin
-                  color="#ff1010"
-                  size="medium"
-                  text=""
-                  textColor=""
-                />
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 z-20">
+                <TrophySpin color="#ff1010" size="medium" />
               </div>
             )}
           </Link>
