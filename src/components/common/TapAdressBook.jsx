@@ -5,7 +5,7 @@ import {
   FaRegBuilding,
   FaRegHeart,
 } from 'react-icons/fa6';
-import { AddAdress } from './AddAdress';
+import AddressDrawer from './AddAdress';
 import { Card, CardContent } from '@mui/material';
 import clsx from 'clsx';
 import { CiLocationOn } from 'react-icons/ci';
@@ -43,7 +43,7 @@ const TapAdressBook = ({
               </p>
             </div>
           </div>
-          <AddAdress userId={userId} className="w-full" />
+          <AddressDrawer mode="add" userId={userId} className="w-full" />
         </div>
       </div>
       {addressList.length === 0 ? (
@@ -126,7 +126,11 @@ const TapAdressBook = ({
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <EditAddress userId={userId} addressId={order?.id} />
+                      <AddressDrawer
+                        mode="edit"
+                        userId={userId}
+                        addressId={order?.id}
+                      />
                       <Button
                         variant="outline"
                         size="sm"

@@ -1,59 +1,110 @@
-import { useState } from "react";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { GoPlus } from "react-icons/go";
-import { IoClose, IoHomeOutline } from "react-icons/io5";
-import { FaRegBuilding, FaRegHeart } from "react-icons/fa6";
-import { CiLocationOn, CiUser } from "react-icons/ci";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { FiPhone } from "react-icons/fi";
-import { Button } from "../ui/Button";
-import { IoMdAdd } from "react-icons/io";
-import { useForm } from "react-hook-form";
-import { useAddress } from "@/Supabase/useAddress";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from 'react';
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import { Button } from '../ui/Button';
+import { MdEdit, MdModeEditOutline } from 'react-icons/md';
+import { IoClose, IoHomeOutline, IoMdAdd } from 'react-icons/io5';
+import { FaRegBuilding } from 'react-icons/fa6';
+import { CiLocationOn, CiUser } from 'react-icons/ci';
+import { GoPlus } from 'react-icons/go';
+import * as RadioGroup from '@radix-ui/react-radio-group';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
+import { FiPhone } from 'react-icons/fi';
+import { useForm } from 'react-hook-form';
+import { useAddress } from '@/Supabase/useAddress';
+import { useTranslation } from 'react-i18next';
 
-export const AddAdress = ({ userId }) => {
+const AddressDrawer = ({ userId, mode = 'add', addressId = null }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isDefault, setIsDefault] = useState(true);
-  const [addressType, setAddressType] = useState("home");
+  const [addressType, setAddressType] = useState('home');
+  const { addressList, addAddress, editAddress } = useAddress(userId);
 
-  const { addAddress } = useAddress(userId);
+  const isEditMode = mode === 'edit';
+  const address = isEditMode
+    ? addressList.filter((item) => item.id === addressId)?.[0]
+    : null;
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      city: '',
+      phoneNumber: '',
+      fullAddress: '',
+      Name: '',
+    },
+  });
+
+  useEffect(() => {
+    if (isEditMode && address) {
+      setValue('city', address.city || '');
+      setValue('phoneNumber', address.phoneNumber || '');
+      setValue('fullAddress', address.Street_Address || '');
+      setValue('Name', address.nameContact || '');
+      setAddressType(address.type || 'home');
+    }
+  }, [isEditMode, address, setValue]);
 
   const submitData = (data) => {
-    const address = {
-      user_id: userId,
-      city: data.city,
-      phoneNumber: data.phoneNumber,
-      Street_Address: data.fullAddress,
-      isDefault: isDefault,
-      nameContact: data.Name,
-      type: addressType,
-    };
-    addAddress(address);
+    if (isEditMode) {
+      editAddress({
+        addressId,
+        city: data.city,
+        phoneNumber: data.phoneNumber,
+        Street_Address: data.fullAddress,
+        nameContact: data.Name,
+        type: addressType,
+      });
+    } else {
+      const newAddress = {
+        user_id: userId,
+        city: data.city,
+        phoneNumber: data.phoneNumber,
+        Street_Address: data.fullAddress,
+        isDefault: false,
+        nameContact: data.Name,
+        type: addressType,
+      };
+      addAddress(newAddress);
+      reset({ Name: '', city: '', phoneNumber: '', fullAddress: '' });
+      setAddressType('home');
+    }
     setIsOpen(false);
-    reset({ Name: "", city: "", phoneNumber: "", fullAddress: "" });
+  };
+
+  const handleCancel = () => {
+    setIsOpen(false);
+    if (!isEditMode) {
+      reset({ Name: '', city: '', phoneNumber: '', fullAddress: '' });
+      setAddressType('home');
+    }
   };
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen} trapFocus={false}>
       <DrawerTrigger asChild>
-        <Button
-          variant="destructive"
-          className="flex w-full max-w-full items-center justify-center gap-2 rounded-md px-6 py-2 font-[300] text-white md:w-[200px]"
-        >
-          <GoPlus className="mr-2 h-4 w-4" />
-          {t('Add Address')}
-        </Button>
+        {isEditMode ? (
+          <Button
+            variant="outline"
+            size="sm"
+            className="border-red-200 bg-transparent text-red-600 hover:bg-red-50"
+          >
+            <MdModeEditOutline className="h-4 w-4" />
+          </Button>
+        ) : (
+          <Button
+            variant="destructive"
+            className="flex w-full max-w-full items-center justify-center gap-2 rounded-md px-6 py-2 font-[300] text-white md:w-[200px]"
+          >
+            <GoPlus className="mr-2 h-4 w-4" />
+            {t('Add Address')}
+          </Button>
+        )}
       </DrawerTrigger>
       <DrawerContent
         className="rounded-t-2xl"
@@ -68,11 +119,15 @@ export const AddAdress = ({ userId }) => {
           <div className="border-b-1 border-b-red-100">
             <div className="flex items-center gap-3 pb-11">
               <div className="rounded-lg bg-red-50 p-2">
-                <GoPlus className="h-6 w-6 text-red-500" />
+                {isEditMode ? (
+                  <MdEdit className="h-6 w-6 text-red-500" />
+                ) : (
+                  <GoPlus className="h-6 w-6 text-red-500" />
+                )}
               </div>
               <div>
                 <h3 className="font-heading text-2xl text-red-500">
-                  {t('Add New Address')}
+                  {isEditMode ? t('Edit Address') : t('Add New Address')}
                 </h3>
                 <p className="text-muted-foreground mt-1">
                   {t('Fill in the details for your new address')}
@@ -89,8 +144,8 @@ export const AddAdress = ({ userId }) => {
                 <label htmlFor="address-type">{t('Address Type')}</label>
 
                 <RadioGroup.Root
-                  className="flex gap-3"
                   id="address-type"
+                  className="flex gap-3"
                   value={addressType}
                   onValueChange={setAddressType}
                 >
@@ -158,6 +213,7 @@ export const AddAdress = ({ userId }) => {
                   <p className="text-red text-[12px]">{errors.Name.message}</p>
                 )}
               </div>
+
               <div className="flex flex-col gap-2">
                 <label htmlFor="fullAddress">{t('Full Address*')}</label>
                 <div className="relative">
@@ -179,6 +235,7 @@ export const AddAdress = ({ userId }) => {
                   </p>
                 )}
               </div>
+
               <div className="flex flex-col gap-2">
                 <label htmlFor="city">{t('City/Location*')}</label>
                 <div className="relative">
@@ -194,6 +251,7 @@ export const AddAdress = ({ userId }) => {
                   <p className="text-red text-[12px]">{errors.city.message}</p>
                 )}
               </div>
+
               <div className="flex flex-col gap-2">
                 <label htmlFor="phone">{t('Phone Number*')}</label>
                 <div className="relative">
@@ -215,12 +273,21 @@ export const AddAdress = ({ userId }) => {
               </div>
 
               <div className="flex items-center gap-4">
-                <Button variant="destructive">
-                  <IoMdAdd />
-                  {t('Add Address')}
+                <Button type="submit" variant="destructive">
+                  {isEditMode ? (
+                    <>
+                      <MdEdit />
+                      {t('Edit Address')}
+                    </>
+                  ) : (
+                    <>
+                      <IoMdAdd />
+                      {t('Add Address')}
+                    </>
+                  )}
                 </Button>
 
-                <Button variant="outline">
+                <Button type="button" variant="outline" onClick={handleCancel}>
                   <IoClose />
                   {t('Cancel')}
                 </Button>
@@ -232,3 +299,4 @@ export const AddAdress = ({ userId }) => {
     </Drawer>
   );
 };
+export default React.memo(AddressDrawer);
