@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { FaLocationDot, FaPaypal } from 'react-icons/fa6';
-import { AddCard } from './AddCard';
+import AddCard from './AddCard';
 import { RiVisaLine } from 'react-icons/ri';
 import { GrAmex } from 'react-icons/gr';
 import React from 'react';

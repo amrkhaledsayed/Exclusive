@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
   DrawerTitle,
+  DrawerDescription,
 } from '@/components/ui/drawer';
 import { Button } from '../ui/Button';
 import { MdEdit, MdModeEditOutline } from 'react-icons/md';
@@ -121,7 +122,7 @@ const AddressDrawer = ({ userId, mode = 'add', addressId = null }) => {
           maxHeight: '95vh',
         }}
       >
-        <div className="mx-auto w-full max-w-[530px] overflow-auto">
+        <div className="mx-auto w-full max-w-[530px]">
           <div className="sticky top-0 mx-auto mt-2 mb-4 h-1.5 w-12 rounded bg-gray-600" />
           <div className="border-b-1 border-b-red-100">
             <div className="flex items-center gap-3 pb-11">
@@ -136,9 +137,9 @@ const AddressDrawer = ({ userId, mode = 'add', addressId = null }) => {
                 <DrawerTitle className="font-heading text-2xl text-red-500">
                   {isEditMode ? t('Edit Address') : t('Add New Address')}
                 </DrawerTitle>
-                <p className="text-muted-foreground mt-1">
+                <DrawerDescription className="text-muted-foreground mt-1">
                   {t('Fill in the details for your new address')}
-                </p>
+                </DrawerDescription>
               </div>
             </div>
           </div>

@@ -4,6 +4,8 @@ import {
   DrawerContent,
   DrawerFooter,
   DrawerTrigger,
+  DrawerTitle,
+  DrawerDescription,
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/Button';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -15,14 +17,14 @@ import { ImCancelCircle } from 'react-icons/im';
 import { handleDownload } from '../Hooks/useToPDF';
 import { useTranslation } from 'react-i18next';
 
-export const DrawerOrder = (props) => {
+const DrawerOrder = (props) => {
   const { t } = useTranslation();
   const { date, id, total, products, shipping, tax, subTotal, orderList } =
     props;
   const normalizedProducts = Array.isArray(orderList?.products)
     ? orderList.products
     : orderList?.products
-    ? [orderList.products] // لو Object حطه جوه Array
+    ? [orderList.products]
     : [];
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuthQuery();
@@ -48,12 +50,12 @@ export const DrawerOrder = (props) => {
         <div className="z-30 mx-auto w-full max-w-[530px] overflow-auto bg-white opacity-95">
           <div className="sticky top-0 mx-auto mt-[8px] mb-4 h-1.5 w-12 rounded-[4px] bg-gray-600" />
 
-          <p className="my-2 text-[20px] font-medium">
+          <DrawerTitle className="my-2 text-[20px] font-medium">
             {t('Order ID:')} {id}
-          </p>
-          <p className="mb-4 text-[14px] text-gray-400">
+          </DrawerTitle>
+          <DrawerDescription className="mb-4 text-[14px] text-gray-400">
             {t('Date:')} {date}
-          </p>
+          </DrawerDescription>
 
           <div>
             {normalizedProducts.map((product, i) => (
@@ -159,3 +161,4 @@ export const DrawerOrder = (props) => {
     </Drawer>
   );
 };
+export default React.memo(DrawerOrder);

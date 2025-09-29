@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+  DrawerTitle,
+  DrawerDescription,
+} from '@/components/ui/drawer';
 import { Button } from '@/components/ui/Button';
 import * as React from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,7 +27,7 @@ import { usePayment } from '@/Supabase/usePayment';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '@/utils/context';
 
-export const AddCard = () => {
+const AddCard = () => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState('visa');
@@ -85,7 +91,12 @@ export const AddCard = () => {
           <div className="sticky top-0 mx-auto mt-2 mb-4 h-1.5 w-12 rounded bg-gray-600" />
 
           <div className="space-y-4 p-4">
-            <p className="text-[23px] font-medium">{t('Add Card')}</p>
+            <DrawerTitle className="text-[23px] font-medium">
+              {t('Add Card')}
+            </DrawerTitle>
+            <DrawerDescription className="sr-only">
+              {t('Add your payment card details')}
+            </DrawerDescription>
             <form
               className="flex flex-col gap-5"
               onSubmit={handleSubmit(handleAddVisa)}
@@ -232,3 +243,4 @@ export const AddCard = () => {
     </Drawer>
   );
 };
+export default React.memo(AddCard);
