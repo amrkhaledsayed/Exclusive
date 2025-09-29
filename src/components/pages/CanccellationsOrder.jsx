@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import { Button } from '../ui/Button';
 import { AppContext } from '@/utils/context';
 
-export const CanccellationsOrder = () => {
+const CanccellationsOrder = () => {
   const { orderList } = React.useContext(AppContext);
 
   const MessageContext = createContext();
@@ -75,3 +75,4 @@ export const CanccellationsOrder = () => {
     </MessageContext.Provider>
   );
 };
+export default React.memo(CanccellationsOrder);

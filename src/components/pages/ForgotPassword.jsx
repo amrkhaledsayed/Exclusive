@@ -6,10 +6,10 @@ import { Button } from '../ui/Button';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import supabase from '@/Supabase/supabase-client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
-export const ForgetPassword = () => {
+const ForgetPassword = () => {
   const { t } = useTranslation();
 
   const [success, setSuccess] = useState(false);
@@ -118,3 +118,4 @@ export const ForgetPassword = () => {
     </div>
   );
 };
+export default React.memo(ForgetPassword);

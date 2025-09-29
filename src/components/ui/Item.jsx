@@ -111,7 +111,7 @@ const Item = (props) => {
                 className="h-full max-h-[280px] w-full max-w-[280px] object-cover transition-all duration-700 group-hover:scale-110"
               />
             )}
-            {!loaded && (
+            {loaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
                 <TrophySpin
                   color="#ff1010"

@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import useFetchData from '../Hooks/useFetchData';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Item from '../ui/Item';
 
-export const CategoryProducts = () => {
+const CategoryProducts = () => {
   const { category } = useParams();
   const { products, loading, fetchData } = useFetchData({
     category: category,
@@ -47,3 +47,4 @@ export const CategoryProducts = () => {
     </div>
   );
 };
+export default React.memo(CategoryProducts);

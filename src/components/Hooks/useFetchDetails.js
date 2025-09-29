@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const useFetchDetails = (productId) => {
   const [product, setProduct] = useState([]);
@@ -13,19 +13,17 @@ export const useFetchDetails = (productId) => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/${productId}`,
-          { signal: controller.signal },
+          { signal: controller.signal }
         );
         const data = await response.json();
 
         setProduct(data);
       } catch (err) {
-        if (err.name !== "AbortError") {
+        if (err.name !== 'AbortError') {
           setError(err.message);
         }
       } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
       }
     };
     fetchData();

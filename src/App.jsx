@@ -1,33 +1,35 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layouts/Layout';
-import Home from './components/Layouts/Home';
-import About from './components/Layouts/About';
-import SignIn from './components/Layouts/SignIn';
-import SignUp from './components/Layouts/SignUp';
-import ErrorPage from './components/common/ErrorPage';
-import Contact from './components/Layouts/Contact';
-import Details from './components/Layouts/Details';
-import AllProducts from './components/Layouts/AllProducts';
 import ScrollToTop from './utils/ScrollToTop';
-import Wishlist from './components/Layouts/Wishlist';
-import PageLoader from './components/common/PageLoader';
-import Cart from './components/Layouts/Cart';
-import CheckOut from './components/Layouts/CheckOut';
-import { Orders } from './components/Layouts/Orders';
-import { CanccellationsOrder } from './components/Layouts/CanccellationsOrder';
-import { CategoryProducts } from './components/Layouts/CategoryProducts';
-import { Account } from './components/Layouts/Account';
-import { ToastContainer } from 'react-toastify';
-import { CheckEmail } from './components/Layouts/CheckEmail';
 import { Toaster } from 'react-hot-toast';
-import { Reviews } from './components/Layouts/Reviews';
-import { ForgetPassword } from './components/Layouts/ForgotPassword';
-
+import { lazy, Suspense } from 'react';
+import { LifeLine } from 'react-loading-indicators';
+const Layout = lazy(() => import('./components/pages/Layout'));
+const Home = lazy(() => import('./components/pages/Home'));
+const ErrorPage = lazy(() => import('./components/common/ErrorPage'));
+const Contact = lazy(() => import('./components/pages/Contact'));
+const Details = lazy(() => import('./components/pages/Details'));
+const AllProducts = lazy(() => import('./components/pages/AllProducts'));
+const Wishlist = lazy(() => import('./components/pages/Wishlist'));
+const Cart = lazy(() => import('./components/pages/Cart'));
+const CheckOut = lazy(() => import('./components/pages/CheckOut'));
+const Orders = lazy(() => import('./components/pages/Orders'));
+const CanccellationsOrder = lazy(() =>
+  import('./components/pages/CanccellationsOrder')
+);
+const CategoryProducts = lazy(() =>
+  import('./components/pages/CategoryProducts')
+);
+const Account = lazy(() => import('./components/pages/Account'));
+const CheckEmail = lazy(() => import('./components/pages/CheckEmail'));
+const Reviews = lazy(() => import('./components/pages/Reviews'));
+const ForgetPassword = lazy(() => import('./components/pages/ForgotPassword'));
+const About = lazy(() => import('./components/pages/About'));
+const SignIn = lazy(() => import('./components/pages/SignIn'));
+const SignUp = lazy(() => import('./components/pages/SignUp'));
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <ToastContainer position="top-center" />
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -39,36 +41,49 @@ function App() {
           duration: 5000,
         }}
       />
-      <PageLoader />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="Reviews" element={<Reviews />} />
-          <Route path="about" element={<About />} />
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="/product/:id" element={<Details />} />
-          <Route path="/AllProducts/:category" element={<CategoryProducts />} />
-          <Route path="AllProducts" element={<AllProducts />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="cart/CheckOut" element={<CheckOut />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="Account" element={<Account />} />
-          <Route path="/Account/CheckEmail" element={<CheckEmail />} />
-          <Route
-            path="Canccellations-Order"
-            element={<CanccellationsOrder />}
-          />
-          <Route path="/sign-in">
-            <Route index element={<SignIn />} />
+      <Suspense
+        fallback={
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000033] backdrop-blur-sm">
+            <LifeLine color="#cd3232" size="medium" text="" textColor="" />{' '}
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="Reviews" element={<Reviews />} />
+            <Route path="about" element={<About />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="/product/:id" element={<Details />} />
+            <Route
+              path="/AllProducts/:category"
+              element={<CategoryProducts />}
+            />
+            <Route path="AllProducts" element={<AllProducts />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="cart/CheckOut" element={<CheckOut />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="Account" element={<Account />} />
+            <Route path="/Account/CheckEmail" element={<CheckEmail />} />
+            <Route
+              path="Canccellations-Order"
+              element={<CanccellationsOrder />}
+            />
+            <Route path="/sign-in">
+              <Route index element={<SignIn />} />
 
-            <Route path="Forget-Password" element={<ForgetPassword />}></Route>
+              <Route
+                path="Forget-Password"
+                element={<ForgetPassword />}
+              ></Route>
+            </Route>
+
+            <Route path="*" element={<ErrorPage />} />
           </Route>
-
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

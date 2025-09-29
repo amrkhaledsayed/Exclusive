@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 import { FaRegUserCircle } from 'react-icons/fa';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '@/utils/context';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { reviewsList } = useContext(AppContext);
 
   const { t, i18n } = useTranslation();
@@ -105,3 +105,4 @@ export const Reviews = () => {
     </section>
   );
 };
+export default React.memo(Reviews);

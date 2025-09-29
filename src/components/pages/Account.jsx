@@ -41,7 +41,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const Account = () => {
+const Account = () => {
   const { t } = useTranslation();
   const { user, data, updateEmail, updateName } = React.useContext(AppContext);
 
@@ -58,12 +58,16 @@ export const Account = () => {
   useEffect(() => {
     setFirstName(
       user?.user_metadata?.first_name ||
-        user?.user_metadata?.full_name.split(' ')[0]
+        user?.user_metadata?.full_name?.split(' ')[0] ||
+        ''
     );
+
     setLastName(
       user?.user_metadata?.last_name ||
-        user?.user_metadata?.full_name.split(' ')[1]
+        user?.user_metadata?.full_name?.split(' ')[1] ||
+        ''
     );
+
     setEmail(user?.email || '');
     setPhone(data?.phoneNumber || '');
   }, [user, data]);
@@ -223,3 +227,4 @@ export const Account = () => {
     </>
   );
 };
+export default React.memo(Account);

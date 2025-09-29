@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { OrederBox } from '../ui/OrederBox';
 
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { Button } from '../ui/Button';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { AppContext } from '@/utils/context';
 
-export const Orders = () => {
+const Orders = () => {
   const MessageContext = createContext();
   const { orderList } = useContext(AppContext);
 
@@ -71,3 +71,4 @@ export const Orders = () => {
     </MessageContext.Provider>
   );
 };
+export default React.memo(Orders);

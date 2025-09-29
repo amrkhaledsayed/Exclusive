@@ -60,15 +60,17 @@ export default function SignIn() {
             >
               {t('Email Address')}
             </label>
-            <MdEmail className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[-50%]" />
-            <Input
-              type="email"
-              id="email"
-              placeholder={t('E-mail')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <div className="relative">
+              <MdEmail className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[50%]" />
+              <Input
+                type="email"
+                id="email"
+                placeholder={t('E-mail')}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
           </div>
           <div className="relative">
             <label
@@ -77,15 +79,17 @@ export default function SignIn() {
             >
               {t('Password')}
             </label>
-            <TbLockPassword className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[-50%]" />
-            <Input
-              type="password"
-              id="password"
-              placeholder={t('Password')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="relative">
+              <TbLockPassword className="absolute top-1/2 rtl:left-4 ltr:right-4 -translate-y-[50%]" />
+              <Input
+                type="password"
+                id="password"
+                placeholder={t('Password')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
           </div>
 
           <span className="mt-2 ml-2 block text-left">

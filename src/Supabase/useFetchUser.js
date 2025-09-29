@@ -27,10 +27,10 @@ export const useAuthQuery = () => {
     const { data: profiles } = await supabase.from('profiles').select('id');
     if (data?.user?.id?.includes(profiles) === false) {
       const { error } = await supabase.from('profiles').upsert({
-        id: data.user.id,
-        email: data.user.email,
-        first_name: data.user.user_metadata.full_name.split(' ')[0],
-        last_name: data.user.user_metadata.full_name.split(' ')[1],
+        id: data?.user?.id,
+        email: data?.user?.email,
+        first_name: data?.user?.user_metadata?.full_name?.split(' ')[0],
+        last_name: data?.user?.user_metadata?.full_name?.split(' ')[1],
       });
       if (error) throw new Error(error.message);
     }

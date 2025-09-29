@@ -156,7 +156,7 @@ const TapPayement = ({ CardsList }) => {
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col items-start gap-1">
                       <p className="font-mono text-[17px] md:text-lg">
-                        {card.Card_number}
+                        {card?.Card_number}
                       </p>
                       <div className="flex w-full items-center justify-between">
                         <p className="text-[10px] font-bold tracking-wide text-gray-400">

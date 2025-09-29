@@ -93,82 +93,80 @@ const MenuDock = ({
         const IconComponent = item.icon;
 
         return (
-          <>
-            <NavLink
-              key={index}
-              to={item.link}
-              end={item.link === '/'}
-              ref={(el) => {
-                itemRefs.current[index] = el;
-              }}
-              className={({ isActive, isPending }) =>
-                cn(
-                  'relative flex flex-col items-center justify-center transition-all duration-300 ease-out',
-                  'focus-visible:ring-primary/50 focus-visible:ring-2 focus-visible:outline-none dark:hover:bg-gray-800/60',
-                  'group',
-                  styles.item,
-                  isPending && 'pointer-events-none opacity-50',
-                  isActive &&
-                    'text-primary after:right-0  after:w-full after:absolute after:-top-[12px]  after:h-[3px] after:rounded-[4px] after:bg-red  ',
-                  !isActive &&
-                    'text-muted-foreground hover:text-foreground rounded-xl hover:scale-105'
-                )
-              }
-              aria-label={item.label}
-            >
-              {({ isActive }) => (
-                <>
-                  <div
-                    className={cn(
-                      'relative flex items-center justify-center transition-all duration-300 ease-out',
-                      orientation === 'horizontal' && showLabels ? 'mb-1' : '',
-                      orientation === 'vertical' && showLabels ? 'mb-1' : ''
-                    )}
-                  >
-                    <IconComponent
-                      className={cn(
-                        styles.icon,
-                        'text-white transition-all duration-300 ease-out',
-                        isActive &&
-                          'text-red brightness-110 drop-shadow-lg filter'
-                      )}
-                    />
-                    {item.lengthNum > 0 && item?.label === 'Cart' && (
-                      <p className="bg-red text-white text-center pt-0.5 absolute -top-[12px] -right-[12px] text-[12px] w-5 h-5 rounded-full">
-                        {' '}
-                        {item?.lengthNum}{' '}
-                      </p>
-                    )}
-                    {item.lengthNum > 0 && item?.label === 'favourite' && (
-                      <p className="bg-red text-white text-center pt-0.5 absolute -top-[12px] -right-[12px] text-[12px] w-5 h-5 rounded-full">
-                        {' '}
-                        {item?.lengthNum}{' '}
-                      </p>
-                    )}
-                  </div>
-                  {showLabels && (
-                    <div className="relative">
-                      <span
-                        ref={(el) => {
-                          textRefs.current[index] = el;
-                        }}
-                        className={cn(
-                          'font-medium hidden sm:block text-white capitalize transition-all duration-300 ease-out',
-                          styles.text,
-                          'relative z-200 whitespace-nowrap',
-                          isActive && 'text-red font-semibold drop-shadow-sm'
-                        )}
-                      >
-                        {t(`${item.label}`)}
-                      </span>
-                    </div>
+          <NavLink
+            key={index}
+            to={item.link}
+            end={item.link === '/'}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
+            className={({ isActive, isPending }) =>
+              cn(
+                'relative flex flex-col items-center justify-center transition-all duration-300 ease-out',
+                'focus-visible:ring-primary/50 focus-visible:ring-2 focus-visible:outline-none dark:hover:bg-gray-800/60',
+                'group',
+                styles.item,
+                isPending && 'pointer-events-none opacity-50',
+                isActive &&
+                  'text-primary after:right-0  after:w-full after:absolute after:-top-[12px]  after:h-[3px] after:rounded-[4px] after:bg-red  ',
+                !isActive &&
+                  'text-muted-foreground hover:text-foreground rounded-xl hover:scale-105'
+              )
+            }
+            aria-label={item.label}
+          >
+            {({ isActive }) => (
+              <>
+                <div
+                  className={cn(
+                    'relative flex items-center justify-center transition-all duration-300 ease-out',
+                    orientation === 'horizontal' && showLabels ? 'mb-1' : '',
+                    orientation === 'vertical' && showLabels ? 'mb-1' : ''
                   )}
+                >
+                  <IconComponent
+                    className={cn(
+                      styles.icon,
+                      'text-white transition-all duration-300 ease-out',
+                      isActive &&
+                        'text-red brightness-110 drop-shadow-lg filter'
+                    )}
+                  />
+                  {item.lengthNum > 0 && item?.label === 'Cart' && (
+                    <p className="bg-red text-white text-center pt-0.5 absolute -top-[12px] -right-[12px] text-[12px] w-5 h-5 rounded-full">
+                      {' '}
+                      {item?.lengthNum}{' '}
+                    </p>
+                  )}
+                  {item.lengthNum > 0 && item?.label === 'favourite' && (
+                    <p className="bg-red text-white text-center pt-0.5 absolute -top-[12px] -right-[12px] text-[12px] w-5 h-5 rounded-full">
+                      {' '}
+                      {item?.lengthNum}{' '}
+                    </p>
+                  )}
+                </div>
+                {showLabels && (
+                  <div className="relative">
+                    <span
+                      ref={(el) => {
+                        textRefs.current[index] = el;
+                      }}
+                      className={cn(
+                        'font-medium hidden sm:block text-white capitalize transition-all duration-300 ease-out',
+                        styles.text,
+                        'relative z-200 whitespace-nowrap',
+                        isActive && 'text-red font-semibold drop-shadow-sm'
+                      )}
+                    >
+                      {t(`${item.label}`)}
+                    </span>
+                  </div>
+                )}
 
-                  <div className="pointer-events-none absolute inset-0 rounded-xl bg-white/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                </>
-              )}
-            </NavLink>
-          </>
+                <div className="pointer-events-none absolute inset-0 rounded-xl bg-white/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+              </>
+            )}
+          </NavLink>
         );
       })}
       <div

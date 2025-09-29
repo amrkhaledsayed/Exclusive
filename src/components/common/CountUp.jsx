@@ -1,20 +1,20 @@
-import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useRef } from 'react';
+import { useInView, useMotionValue, useSpring } from 'motion/react';
 
 export default function CountUp({
   to,
   from = 0,
-  direction = "up",
+  direction = 'up',
   delay = 0,
   duration = 2,
-  className = "",
+  className = '',
   startWhen = true,
-  separator = "",
+  separator = '',
   onStart,
   onEnd,
 }) {
   const ref = useRef(null);
-  const motionValue = useMotionValue(direction === "down" ? to : from);
+  const motionValue = useMotionValue(direction === 'down' ? to : from);
 
   const damping = 20 + 40 * (1 / duration);
   const stiffness = 100 * (1 / duration);
@@ -24,13 +24,13 @@ export default function CountUp({
     stiffness,
   });
 
-  const isInView = useInView(ref, { once: true, margin: "0px" });
+  const isInView = useInView(ref, { once: true, margin: '0px' });
 
   const getDecimalPlaces = (num) => {
     const str = num.toString();
 
-    if (str.includes(".")) {
-      const decimals = str.split(".")[1];
+    if (str.includes('.')) {
+      const decimals = str.split('.')[1];
 
       if (parseInt(decimals) !== 0) {
         return decimals.length;
@@ -44,27 +44,34 @@ export default function CountUp({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = String(direction === "down" ? to : from);
+      ref.current.textContent = String(direction === 'down' ? to : from);
     }
   }, [from, to, direction]);
 
   useEffect(() => {
     if (isInView && startWhen) {
-      if (typeof onStart === "function") onStart();
+      if (typeof onStart === 'function') onStart();
 
-      const timeoutId = setTimeout(() => {
-        motionValue.set(direction === "down" ? from : to);
-      }, delay * 1000);
+      // Use requestAnimationFrame for better performance
+      const startAnimation = () => {
+        motionValue.set(direction === 'down' ? from : to);
+      };
 
-      const durationTimeoutId = setTimeout(
-        () => {
-          if (typeof onEnd === "function") onEnd();
-        },
-        delay * 1000 + duration * 1000,
-      );
+      const timeoutId =
+        delay > 0
+          ? setTimeout(startAnimation, delay * 1000)
+          : requestAnimationFrame(startAnimation);
+
+      const durationTimeoutId = setTimeout(() => {
+        if (typeof onEnd === 'function') onEnd();
+      }, delay * 1000 + duration * 1000);
 
       return () => {
-        clearTimeout(timeoutId);
+        if (delay > 0) {
+          clearTimeout(timeoutId);
+        } else {
+          cancelAnimationFrame(timeoutId);
+        }
         clearTimeout(durationTimeoutId);
       };
     }
@@ -82,7 +89,7 @@ export default function CountUp({
   ]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         const hasDecimals = maxDecimals > 0;
 
@@ -92,8 +99,8 @@ export default function CountUp({
           maximumFractionDigits: hasDecimals ? maxDecimals : 0,
         };
 
-        const formattedNumber = Intl.NumberFormat("en-US", options).format(
-          latest,
+        const formattedNumber = Intl.NumberFormat('en-US', options).format(
+          latest
         );
 
         ref.current.textContent = separator

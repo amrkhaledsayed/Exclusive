@@ -13,7 +13,7 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { Loading } from '../ui/Loading';
 
-export const CheckEmail = () => {
+const CheckEmail = () => {
   const [otpValues, setOtpValues] = useState();
   const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
@@ -121,3 +121,4 @@ export const CheckEmail = () => {
     </div>
   );
 };
+export default React.memo(CheckEmail);
