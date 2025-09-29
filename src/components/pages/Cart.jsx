@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 import CartItem from '../ui/CartItem';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from '../ui/input';
 import NoUser from '../ui/NoUser';
@@ -17,13 +17,16 @@ const Cart = () => {
   const [quantities, setQuantities] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const subTotal = cartList?.reduce((acc, item) => {
-    return acc + item?.price * item?.quantity;
-  }, 0);
+  const subTotal = useMemo(() => {
+    return cartList?.reduce(
+      (acc, item) => acc + item?.price * item?.quantity,
+      0
+    );
+  }, [cartList]);
 
-  const Tax = subTotal * 0.12;
-  const Shipping = subTotal * 0.14;
-  const total = subTotal + Tax + Shipping;
+  const Tax = useMemo(() => subTotal * 0.12, []);
+  const Shipping = useMemo(() => subTotal * 0.14, []);
+  const total = useMemo(() => subTotal + Tax + Shipping, []);
 
   const handleQuantityChange = (productId, value) => {
     setQuantities((prev) => ({
