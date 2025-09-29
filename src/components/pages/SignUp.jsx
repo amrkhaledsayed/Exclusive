@@ -197,7 +197,11 @@ export default function SignUp() {
           <p className="text-center text-[16px]">
             {t('Already have account?')}
           </p>
-          <Link to="/sign-in" className="text-[16px] underline">
+          <Link
+            to="/sign-in"
+            className="text-[16px] underline"
+            aria-label={t('Log in')}
+          >
             {t('Log in')}
           </Link>
         </span>

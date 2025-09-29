@@ -104,7 +104,7 @@ const ForgetPassword = () => {
             )}
           </div>
           <Button variant="destructive">{t('Send Reset Link')}</Button>
-          <Link to=".." className="w-full">
+          <Link to=".." className="w-full" aria-label={t('Go To Back')}>
             <Button
               variant="outline"
               className="flex w-full rtl:flex-row-reverse"

@@ -44,23 +44,31 @@ const Header = () => {
 
   const handelLogout = () => {
     setLoading(true);
-    setTimeout(() => {
-      logOut.mutate();
-      if (logOut.isSuccess) {
+    logOut.mutate(undefined, {
+      onSuccess: () => {
         setOpenDialog(false);
-      }
-      if (logOut.isError) {
+        setLoading(false);
+      },
+      onError: (error) => {
+        toast.error(error.message);
         setOpenDialog(false);
-        toast.error(logOut.error.message);
-      }
-      setLoading(false);
-    }, 3000);
+        setLoading(false);
+      },
+    });
   };
   useEffect(() => {
     if (value && value.length > 1) {
       fetchData();
     }
   }, [value, fetchData]);
+  const handleLogoutAndClose = async () => {
+    try {
+      await handelLogout();
+      setOpenDialog(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <header className="mx-auto">
       <div className="flex min-h-12 items-center bg-black">
@@ -89,17 +97,36 @@ const Header = () => {
           </Link>
 
           <nav className="hidden items-center gap-6 text-sm md:flex lg:gap-12 lg:text-base">
-            <NavLink to="/" className="link_nav">
+            <NavLink
+              to="/"
+              className="link_nav"
+              aria-label={t('Go to Home page')}
+            >
               {t('Home')}
             </NavLink>
-            <Link className="link_nav" to="/contact">
+
+            <Link
+              to="/contact"
+              className="link_nav"
+              aria-label={t('Contact us page')}
+            >
               {t('Contact')}
             </Link>
-            <NavLink to="/about" className="link_nav">
+
+            <NavLink
+              to="/about"
+              className="link_nav"
+              aria-label={t('About us page')}
+            >
               {t('About')}
             </NavLink>
+
             {!activeUser && (
-              <NavLink to="sign-up" className="link_nav">
+              <NavLink
+                to="sign-up"
+                className="link_nav"
+                aria-label={t('Create a new account')}
+              >
                 {t('Sign Up')}
               </NavLink>
             )}
@@ -109,11 +136,16 @@ const Header = () => {
             <button
               onClick={() => setShowSearch((prev) => !prev)}
               className="text-gray-700"
+              aria-label={t('Open search')}
             >
               <CiSearch size={22} />
             </button>
 
-            <Link to="/wishlist" className="relative md:block hidden">
+            <Link
+              to="/wishlist"
+              className="relative md:block hidden"
+              aria-label={t('Wishlist')}
+            >
               {wishlist && wishlist.length > 0 && (
                 <span className="absolute -top-1 -right-1 rounded-full bg-red-500 px-1 text-xs text-white">
                   {wishlist.length}
@@ -122,7 +154,11 @@ const Header = () => {
               <CiHeart className="cursor-pointer" size="22px" />
             </Link>
 
-            <Link to="/cart" className="relative md:block hidden">
+            <Link
+              to="/cart"
+              className="relative md:block hidden"
+              aria-label={t('Cart')}
+            >
               {cartList && cartList.length > 0 && (
                 <span className="absolute -top-1 -right-1 rounded-full bg-red-500 px-1 text-xs text-white">
                   {cartList.length}
@@ -136,6 +172,7 @@ const Header = () => {
                 <button
                   onClick={handleClick}
                   className="flex items-center gap-2.5"
+                  aria-label={t('Open account menu')}
                 >
                   <FaUserCircle
                     className="cursor-pointer text-red-500"
@@ -189,6 +226,7 @@ const Header = () => {
                       setOpenDialog(true);
                       setAnchorEl(null);
                     }}
+                    aria-label={t('Log out')}
                   >
                     <CiLogout /> {t('Log out')}
                   </MenuItem>
@@ -274,12 +312,7 @@ const Header = () => {
             </Button>
             <Button
               variant="destructive"
-              onClick={() => {
-                handelLogout();
-                setTimeout(() => {
-                  setOpenDialog(false);
-                }, 500);
-              }}
+              onClick={handleLogoutAndClose}
               disabled={logOut.isLoading || loading}
             >
               {t('Log out')}

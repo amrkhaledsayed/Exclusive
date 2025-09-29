@@ -94,7 +94,11 @@ const SwiperSection = forwardRef(
         </Carousel>
 
         {swiper && btn && (
-          <Link to="/AllProducts" className="h-fit w-fit self-center">
+          <Link
+            to="/AllProducts"
+            className="h-fit w-fit self-center"
+            aria-label={t('View All Products')}
+          >
             <Button
               size="lg"
               variant="destructive"

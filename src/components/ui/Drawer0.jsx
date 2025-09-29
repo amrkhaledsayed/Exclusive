@@ -16,7 +16,6 @@ import SelectVariants from './List';
 
 import {
   CircleX,
-  Globe,
   Heart,
   LogOut,
   ShoppingBag,

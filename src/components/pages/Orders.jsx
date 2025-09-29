@@ -19,7 +19,7 @@ const Orders = () => {
       <div className="mx-auto w-full max-w-[1200px] px-4 pt-[20px] md:pt-[50px]">
         <div>
           <div className="mb-8 flex items-center text-[14px] font-normal">
-            <Link to="/" className="text-gray-500">
+            <Link to="/" className="text-gray-500" aria-label={t('Home')}>
               {t('Home')}
             </Link>
             <MdKeyboardArrowRight

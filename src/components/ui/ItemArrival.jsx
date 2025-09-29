@@ -22,6 +22,7 @@ const ItemArrival = (props) => {
         <p className="mt-1 text-sm">{t(`${des}`)}</p>
         <button className="group mt-4 flex cursor-pointer items-center gap-5 border-none bg-transparent p-0 rtl:flex-row-reverse">
           <Link
+            aria-label={t('Shop Now')}
             to="/allProducts"
             className="relative text-[12px] tracking-[2px] uppercase after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-white after:transition-transform after:duration-300 group-hover:after:origin-bottom-left group-hover:after:scale-x-100 md:text-[14px] md:tracking-[4px]"
           >

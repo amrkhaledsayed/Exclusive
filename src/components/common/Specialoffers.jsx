@@ -100,7 +100,7 @@ const SpecialOffers = () => {
               className="z-10 h-auto w-[90%] max-w-full drop-shadow-[0_0px_100px_rgba(118,116,116,0.6)]"
             />
           </div>
-          <Link to="AllProducts">
+          <Link to="AllProducts" aria-label={t('Shop now!')}>
             <button className="relative mt-4 overflow-hidden rounded-xl border-0 bg-[#ecd448] px-6 py-3 text-sm font-bold text-[#131313] shadow-[0_2px_0_2px_#000] transition-all duration-300 before:absolute before:top-1/2 before:h-[120%] before:w-[100px] before:-translate-x-[150%] before:-translate-y-1/2 before:skew-x-[30deg] before:bg-[#ff6700] before:transition-all before:duration-500 before:content-[''] hover:bg-[#4cc9f0] hover:text-white hover:shadow-[0_2px_0_2px_#0d3b66] hover:before:translate-x-[150%] hover:before:delay-100 active:scale-90 md:mt-6 md:px-8 md:py-4 md:text-[15px]">
               {t('Shop now!')}
             </button>

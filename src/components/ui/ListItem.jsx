@@ -9,6 +9,7 @@ export function ListItem({ title, description, href, image, price }) {
 
   return (
     <Link
+      aria-label={t('item')}
       to={href}
       className="flex h-full max-w-[200px] flex-col items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
     >

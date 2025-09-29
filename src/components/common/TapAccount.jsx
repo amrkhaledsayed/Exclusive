@@ -26,20 +26,28 @@ const TapAccount = ({
   lastName,
 }) => {
   const [loading, setLoading] = useState(false);
-  const handelSave = () => {
-    setLoading(true);
-    setTimeout(() => {
-      changeOther();
+  const handelSave = async () => {
+    try {
+      setLoading(true);
+      await changeOther();
+    } catch (err) {
+      console.error(err);
+    } finally {
       setLoading(false);
-    }, 3000);
+    }
   };
-  const handelVerify = () => {
-    setLoading(true);
-    setTimeout(() => {
-      handleSendOTP();
+
+  const handelVerify = async () => {
+    try {
+      setLoading(true);
+      await handleSendOTP();
+    } catch (err) {
+      console.error(err);
+    } finally {
       setLoading(false);
-    }, 3000);
+    }
   };
+
   const { t } = useTranslation();
   return (
     <div>

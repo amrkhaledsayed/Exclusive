@@ -21,10 +21,14 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      SignIn.mutate({ email, password });
+
+    try {
+      await SignIn.mutateAsync({ email, password });
+    } catch (error) {
+      console.error('Sign-in error:', error);
+    } finally {
       setLoading(false);
-    }, 3000);
+    }
   };
 
   return (
@@ -94,6 +98,7 @@ export default function SignIn() {
 
           <span className="mt-2 ml-2 block text-left">
             <Link
+              aria-label={t('Forgot Password ?')}
               to="Forget-Password"
               className="text-[11px] text-red-500 no-underline"
             >
@@ -141,7 +146,7 @@ export default function SignIn() {
         </form>
         <p className="mt-3 text-gray-600">
           {t("Don't have an account?")}
-          <Link to="/sign-up" className="text-red">
+          <Link to="/sign-up" className="text-red" aria-label={t('Sign Up')}>
             {t('Sign Up')}
           </Link>
         </p>

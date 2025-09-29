@@ -31,6 +31,7 @@ const ProductOffer = (props) => {
         <button className="group mt-4 flex cursor-pointer rtl:flex-row-reverse items-center justify-center border-none bg-transparent transition-all duration-300 hover:scale-105 md:mt-6 md:justify-start">
           <Link
             to="/allProducts"
+            aria-label="Shop All Products"
             className="relative pr-3 text-xs font-semibold tracking-wider text-white uppercase transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 after:bg-white after:transition-transform after:duration-300 after:content-[''] group-hover:after:origin-bottom-left group-hover:after:scale-x-100 md:text-sm md:tracking-widest"
           >
             {t('SHOP NOW')}
@@ -54,7 +55,8 @@ const ProductOffer = (props) => {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
+        poster="/video-poster.jpg"
         className="absolute top-0 left-0 h-full w-full object-cover"
       >
         <source src="/video.mp4" type="video/mp4" />

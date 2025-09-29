@@ -1,10 +1,11 @@
-import Qr from "@public/Qr Code.svg";
-import apple from "@public/download-appstore.svg";
-import { GrFacebookOption } from "react-icons/gr";
-import { FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import andro from "@public/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg";
-import { useTranslation } from "react-i18next";
-import React from "react";
+import Qr from '@public/Qr Code.svg';
+import apple from '@public/download-appstore.svg';
+import { GrFacebookOption } from 'react-icons/gr';
+import { FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import andro from '@public/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg';
+import { useTranslation } from 'react-i18next';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -13,13 +14,13 @@ const Footer = () => {
     <footer className="rounded-t-3xl bg-black">
       <div className="mx-auto flex max-w-full flex-col flex-wrap gap-[87px] py-[80px] pl-[20px] text-white md:max-w-[1200px] md:flex-row rtl:pr-[20px]">
         <div className="flex flex-none flex-col gap-4">
-          <p className="title-footer">{t("Exclusive")}</p>
-          <p className="label-footer">{t("Subscribe")}</p>
-          <p className="label-footer">{t("Get 10% off your first order")}</p>
+          <p className="title-footer">{t('Exclusive')}</p>
+          <p className="label-footer">{t('Subscribe')}</p>
+          <p className="label-footer">{t('Get 10% off your first order')}</p>
           <div className="relative mt-6 w-[217px]">
             <input
               type="email"
-              placeholder={t("Email Address")}
+              placeholder={t('Email Address')}
               autoComplete="email"
               className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pr-20 pl-6 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:ring-neutral-950/5 focus:outline-none"
             />
@@ -42,34 +43,64 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <p className="title-footer">{t("Support")}</p>
+          <p className="title-footer">{t('Support')}</p>
           <p className="label-footer">
-            {t("111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.")}
+            {t('111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.')}
           </p>
           <p className="label-footer">exclusive@gmail.com</p>
           <p className="label-footer">+88015-88888-9999</p>
         </div>
 
         <div className="flex flex-none flex-col gap-4">
-          <p className="title-footer">{t("Account")}</p>
-          <p className="label-footer">{t("My Account")}</p>
-          <p className="label-footer">{t("Login / Register")}</p>
-          <p className="label-footer">{t("Cart")}</p>
-          <p className="label-footer">{t("Wishlist")}</p>
-          <p className="label-footer">{t("Shop Now")}</p>
+          <p className="title-footer">{t('Account')}</p>
+          <Link
+            to="/Account"
+            className="label-footer"
+            aria-label="Go to My Account page"
+          >
+            {t('My Account')}
+          </Link>
+          <Link
+            to="/sign-in"
+            className="label-footer"
+            aria-label="Login or Create a new account"
+          >
+            {t('Login / Register')}
+          </Link>
+          <Link
+            to="/cart"
+            className="label-footer"
+            aria-label="View your shopping cart"
+          >
+            {t('Cart')}
+          </Link>
+          <Link
+            to="/wishlist"
+            className="label-footer"
+            aria-label="View your wishlist"
+          >
+            {t('Wishlist')}
+          </Link>
+          <Link
+            to="/AllProducts"
+            className="label-footer"
+            aria-label="Browse all products in the shop"
+          >
+            {t('Shop Now')}
+          </Link>
         </div>
 
         <div className="flex flex-none flex-col gap-4">
-          <p className="title-footer">{t("Quick Link")}</p>
-          <p className="label-footer">{t("Privacy Policy")}</p>
-          <p className="label-footer">{t("Terms Of Use")}</p>
-          <p className="label-footer">{t("Contact")}</p>
+          <p className="title-footer">{t('Quick Link')}</p>
+          <p className="label-footer">{t('Privacy Policy')}</p>
+          <p className="label-footer">{t('Terms Of Use')}</p>
+          <p className="label-footer">{t('Contact')}</p>
         </div>
 
         <div className="flex flex-none flex-col gap-4">
-          <p className="title-footer">{t("Download App")}</p>
+          <p className="title-footer">{t('Download App')}</p>
           <p className="text-body-m leading-5 font-medium text-[#fafafa]">
-            {t("Save $3 with App New User Only")}
+            {t('Save $3 with App New User Only')}
           </p>
           <div className="flex items-center gap-[8px]">
             <img src={Qr} alt="" />

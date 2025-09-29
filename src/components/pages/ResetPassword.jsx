@@ -192,7 +192,7 @@ export const ResetPassword = () => {
           >
             {t('Update Password')}
           </Button>
-          <Link className="w-full" to="..">
+          <Link className="w-full" to=".." aria-label={t('Back to EmailEntry')}>
             <Button
               isFullWidth={true}
               className="flex w-full items-center justify-center gap-3.5 text-[20px] rtl:flex-row-reverse"

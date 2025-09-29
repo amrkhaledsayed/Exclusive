@@ -62,10 +62,11 @@ const CheckOut = () => {
       });
     }
   }, [data, reset]);
-  const handleCheckout = (data) => {
-    setOpen(true);
-    setLoading(true);
-    setTimeout(() => {
+  const handleCheckout = async (data) => {
+    try {
+      setOpen(true);
+      setLoading(true);
+
       const products = cartList.map((item) => ({
         product_id: item.product_id,
         product_name: item.product_name,
@@ -73,6 +74,7 @@ const CheckOut = () => {
         price: item.price,
         quantity: item.quantity,
       }));
+
       const productBuyNow = {
         product_id,
         product_name,
@@ -91,19 +93,23 @@ const CheckOut = () => {
         Phone_Number: data.phone,
         Email_Address: data.email,
         products: now ? productBuyNow : products,
-        subTotal: subTotal,
+        subTotal,
         TownCity: data.City,
         shipping: Shipping,
         tax: Tax,
-        total: total,
+        total,
       };
 
-      addOrder(orderData);
+      await addOrder(orderData);
+
       clearData();
-      setLoading(false);
-      navigate('/');
       reset();
-    }, 3000);
+      navigate('/');
+    } catch (error) {
+      console.error('Checkout error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (event) => {
@@ -113,7 +119,11 @@ const CheckOut = () => {
   return (
     <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-3 pt-10 md:pt-20">
       <div className="flex items-center text-sm text-gray-600">
-        <Link to="/" className="transition hover:text-red-500">
+        <Link
+          to="/"
+          className="transition hover:text-red-500"
+          aria-label={t('Account')}
+        >
           {t('Account')}
         </Link>
         <MdKeyboardArrowRight
@@ -362,7 +372,7 @@ const CheckOut = () => {
               {t('Apply Coupon')}
             </Button>
           </div>
-          <Link to="/">
+          <Link to="/" aria-label={t('Home')}>
             <Button
               disabled={loading}
               variant="destructive"

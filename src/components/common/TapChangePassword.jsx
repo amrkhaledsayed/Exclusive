@@ -10,12 +10,15 @@ import { Loading } from '../ui/Loading';
 const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const onClick = () => {
+  const onClick = async () => {
     setLoading(true);
-    setTimeout(() => {
-      handlePasswordUpdate();
+    try {
+      await handlePasswordUpdate();
+    } catch (error) {
+      toast.error(error);
+    } finally {
       setLoading(false);
-    }, 2000);
+    }
   };
   return (
     <div className="pb-6">

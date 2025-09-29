@@ -5,7 +5,7 @@ const CategoryCard = ({ img, titleCategory, value }) => {
   const { t } = useTranslation();
 
   return (
-    <Link to={`AllProducts/${value}`}>
+    <Link to={`AllProducts/${value}`} aria-label={t('AllProducts')}>
       <div className="group hover:bg-red flex min-h-[145px] min-w-[170px] flex-col items-center justify-center gap-6 rounded-md border-1 border-gray-400 transition-all">
         <div className="group-hover:text-white">{img}</div>
         <p className="font-400 text-black group-hover:text-white">

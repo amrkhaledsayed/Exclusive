@@ -101,13 +101,18 @@ const Item = (props) => {
           ref={ref}
           className="from-muted/50 to-muted relative aspect-square overflow-hidden bg-gradient-to-br"
         >
-          <Link to={`/product/${id}`} className="relative z-10">
+          <Link
+            to={`/product/${id}`}
+            className="relative z-10"
+            aria-label={t('details')}
+          >
             {inView && (
               <img
                 src={image}
                 onLoad={() => setLoaded(true)}
                 loading="lazy"
                 alt={productName}
+                fetchpriority="low"
                 className="h-full max-h-[280px] w-full max-w-[280px] object-cover transition-all duration-700 group-hover:scale-110"
               />
             )}

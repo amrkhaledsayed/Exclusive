@@ -1,6 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import DialogDemo from '../ui/Dialog';
+import toast from 'react-hot-toast';
 import { Rating } from '@mui/material';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/input';
@@ -40,26 +41,29 @@ export const AddReview = ({
 
   const { t } = useTranslation();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setLoading(true);
-    setTimeout(() => {
-      const review = {
-        user_id: user?.id,
-        img,
-        name: `${userData?.first_name ?? ''} ${userData?.last_name ?? ''}`,
-        review_title: data.title,
-        rating: data?.rating,
-        review_content: data?.content,
-        product_id,
-      };
-
-      addReviews(review);
+    const review = {
+      user_id: user?.id,
+      img,
+      name: `${userData?.first_name ?? ''} ${userData?.last_name ?? ''}`,
+      review_title: data.title,
+      rating: data?.rating,
+      review_content: data?.content,
+      product_id,
+    };
+    try {
+      await addReviews(review);
       setInvalidAdd(true);
-      fetchReviewsList();
+      await fetchReviewsList();
       reset();
       setLoading(false);
       setOpenDialog(false);
-    }, 3000);
+    } catch (error) {
+      toast.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <DialogDemo

@@ -33,13 +33,12 @@ const Cart = () => {
   };
   const handleCheckOut = () => {
     setLoading(true);
-    setTimeout(() => {
-      navigate('checkOut', {
-        state: { subTotal, Tax, Shipping, total, now: false },
-      });
-      setLoading(false);
-    }, 3000);
+    navigate('checkOut', {
+      state: { subTotal, Tax, Shipping, total, now: false },
+    });
+    setLoading(false);
   };
+
   return (
     <>
       {!user ? (
@@ -52,7 +51,11 @@ const Cart = () => {
       ) : (
         <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-3 pt-10 md:pt-20">
           <div className="flex items-center text-sm text-gray-600">
-            <Link to="/" className="transition hover:text-red-500">
+            <Link
+              to="/"
+              className="transition hover:text-red-500"
+              aria-label={t('Account')}
+            >
               {t('Account')}
             </Link>
             <span className="mx-2">/</span>
@@ -112,7 +115,7 @@ const Cart = () => {
                 </div>
 
                 <div className="mt-6 flex justify-between">
-                  <Link to="/">
+                  <Link to="/" aria-label={t('Home')}>
                     <Button variant="destructive">{t('Return To Shop')}</Button>
                   </Link>
                   <Button onClick={clearData} variant="outline">

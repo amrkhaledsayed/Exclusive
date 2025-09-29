@@ -21,22 +21,31 @@ const CheckEmail = () => {
   const { oldEmail } = location.state || {};
   const { t } = useTranslation();
   const verifyOTP = async () => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const { error: errorOTP } = await supabase.auth.verifyOtp({
-      email: oldEmail,
-      token: otpValues,
-      type: 'email_change',
-    });
-    if (errorOTP) return { success: false, error: errorOTP.message };
-    else {
-      setTimeout(() => {
-        setLoading(false);
-        toast.success(t('Email updated successfully'));
-        navigator('/');
-      }, 2000);
+      const { error: errorOTP } = await supabase.auth.verifyOtp({
+        email: oldEmail,
+        token: otpValues,
+        type: 'email_change',
+      });
+
+      if (errorOTP) {
+        toast.error(errorOTP.message);
+        return { success: false, error: errorOTP.message };
+      }
+
+      toast.success(t('Email updated successfully'));
+      navigator('/');
+      return { success: true };
+    } catch (err) {
+      toast.error(t('Something went wrong'));
+      return { success: false, error: err.message };
+    } finally {
+      setLoading(false);
     }
   };
+
   const num = oldEmail?.match(/^(.{2})([A-Za-z0-9]+)(?=@)/);
   const email = oldEmail?.replace(
     /^(.{2})([A-Za-z0-9]+)(?=@)/,
@@ -99,7 +108,7 @@ const CheckEmail = () => {
             {loading && <Loading />}
           </Button>
         </form>
-        <Link className="w-full" to="/Account">
+        <Link className="w-full" to="/Account" aria-label={t('Account')}>
           <Button
             isFullWidth={true}
             className="flex w-full items-center justify-center gap-3.5 text-[20px]"

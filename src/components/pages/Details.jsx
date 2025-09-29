@@ -191,12 +191,12 @@ const Details = () => {
     <div>
       <div className="mx-auto max-w-[1200px] px-[7px] pt-[20px] md:pt-[50px]">
         <div className="mb-8 line-clamp-1 flex items-center text-[14px] font-normal text-gray-500">
-          <Link to="/" className="text-gray-500 md:text-lg">
+          <Link to="/" className="text-gray-500 md:text-lg" aria-label={t('Home')}>
             {t('Account')}
           </Link>
           <MdKeyboardArrowRight />
 
-          <Link className="ml-1 text-nowrap text-gray-500 md:text-lg">
+          <Link className="ml-1 text-nowrap text-gray-500 md:text-lg" aria-label={t('category')}>
             {product?.category}
           </Link>
           <MdKeyboardArrowRight />
@@ -215,7 +215,12 @@ const Details = () => {
                     className="cursor-pointer bg-[#f5f5f5] first:mt-0 last:mb-0"
                     onMouseMove={() => setActiveImg(item)}
                   >
-                    <img src={item} loading="lazy" className="m-0 p-0" />
+                    <img
+                      src={item}
+                      loading="lazy"
+                      fetchpriority="low"
+                      className="m-0 p-0"
+                    />
                   </div>
                 ))}
               </div>
@@ -225,6 +230,8 @@ const Details = () => {
               <Zoom>
                 <img
                   src={activeImg}
+                  fetchpriority="high"
+                  loading="eager"
                   alt={product?.title}
                   className="h-full w-[100%]"
                 />
