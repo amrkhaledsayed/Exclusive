@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Button } from '../ui/Button';
 import { MdEdit, MdModeEditOutline } from 'react-icons/md';
-import { IoClose, IoHomeOutline, IoMdAdd } from 'react-icons/io5';
+import { IoClose, IoHomeOutline } from 'react-icons/io5';
+import { IoMdAdd } from 'react-icons/io';
 import { FaRegBuilding } from 'react-icons/fa6';
 import { CiLocationOn, CiUser } from 'react-icons/ci';
 import { GoPlus } from 'react-icons/go';
@@ -21,9 +22,10 @@ const AddressDrawer = ({ userId, mode = 'add', addressId = null }) => {
   const { addressList, addAddress, editAddress } = useAddress(userId);
 
   const isEditMode = mode === 'edit';
-  const address = isEditMode
-    ? addressList.filter((item) => item.id === addressId)?.[0]
-    : null;
+  const address =
+    isEditMode && addressList
+      ? addressList.find((item) => item.id === addressId)
+      : null;
 
   const {
     register,
@@ -299,4 +301,5 @@ const AddressDrawer = ({ userId, mode = 'add', addressId = null }) => {
     </Drawer>
   );
 };
+
 export default React.memo(AddressDrawer);
