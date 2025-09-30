@@ -14,6 +14,8 @@ const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
     setLoading(true);
     try {
       await handlePasswordUpdate();
+
+      dispatch({ type: 'RESET' });
     } catch (error) {
       toast.error(error);
     } finally {
@@ -62,7 +64,7 @@ const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
               {t('Current Password')}
             </label>
             <div className="relative">
-              <IoLockClosedOutline className="text-muted-foreground lrt:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
+              <IoLockClosedOutline className="text-muted-foreground ltr:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
               <InputPassword
                 className="w-full ltr:pl-8 rtl:pr-8"
                 placeholder={t('Current Password')}
@@ -94,7 +96,7 @@ const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
               {t('New Password')}
             </label>
             <div className="relative">
-              <IoLockClosedOutline className="text-muted-foreground lrt:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
+              <IoLockClosedOutline className="text-muted-foreground ltr:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
               <InputPassword
                 className="w-full ltr:pl-8 rtl:pr-8"
                 placeholder={t('New Password')}
@@ -118,7 +120,7 @@ const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
               {t('Confirm New Password')}
             </label>
             <div className="relative">
-              <IoLockClosedOutline className="text-muted-foreground lrt:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
+              <IoLockClosedOutline className="text-muted-foreground ltr:left-3 absolute top-1/2 h-4 w-4 -translate-y-1/2 transform rtl:right-3" />
               <InputPassword
                 id="confirm-password"
                 className="w-full ltr:pl-8 rtl:pr-8"

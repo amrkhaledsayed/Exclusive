@@ -145,6 +145,7 @@ const Account = () => {
       });
       if (error) throw new Error(error.message);
       else {
+        toast.success(t('Update Password successful'));
         await supabase
           .from('profiles')
           .update({ password: state.confirmPassword })
