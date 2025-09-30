@@ -8,7 +8,7 @@ import { usePayment } from '@/Supabase/usePayment';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import supabase from '@/Supabase/supabase-client';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
 import { useAddress } from '@/Supabase/useAddress';
