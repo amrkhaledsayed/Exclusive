@@ -57,14 +57,12 @@ export const useAuthQuery = () => {
       if (error) {
         if (error.message.toLowerCase().includes('password')) {
           toast.error('Invalid password');
-          throw new Error('Invalid password ');
         } else if (error.message.toLowerCase().includes('email')) {
           toast.error('Invalid email address');
-          throw new Error('Invalid email address');
         } else {
           toast.error('Invalid password or email address');
-          throw new Error('Invalid password or email address');
         }
+        return;
       }
     },
     onSuccess: async () => {
