@@ -50,7 +50,7 @@ export const useAuthQuery = () => {
 
   const signIn = useMutation({
     mutationFn: async ({ email, password }) => {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -62,8 +62,9 @@ export const useAuthQuery = () => {
         } else {
           toast.error('Invalid password or email address');
         }
-        return;
+        return Promise.reject(error);
       }
+      return data;
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['currentUser'] });
