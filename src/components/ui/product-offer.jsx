@@ -18,6 +18,7 @@ const ProductOffer = (props) => {
             alt="Brand Logo"
             className="h-8 w-8 object-contain md:h-10 md:w-10"
             loading="lazy"
+            fetchpriority="high"
           />
           <p className="text-sm font-medium md:text-base lg:text-lg">
             {t(`${iconTitle}`)}
@@ -58,7 +59,8 @@ const ProductOffer = (props) => {
         muted
         loop
         playsInline
-        preload="none"
+        preload="auto"
+        fetchpriority="high"
         className="absolute top-0 left-0 h-full w-full object-cover"
       >
         <source src="/video.mp4" type="video/mp4" />
