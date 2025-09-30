@@ -62,6 +62,7 @@ export const useAuthQuery = () => {
           toast.error('Invalid email address');
           throw new Error('Invalid email address');
         } else {
+          toast.error('Invalid password or email address');
           throw new Error('Invalid password or email address');
         }
       }
