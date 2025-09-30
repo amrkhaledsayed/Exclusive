@@ -83,22 +83,21 @@ const DrawerOrder = (props) => {
               </div>
             ))}
           </div>
-
           <div className="flex flex-col gap-2 pt-3">
             <div className="flex justify-between text-gray-400">
-              <p>{t('SubTotal:')}</p>
+              <p>{t('SubTotal:') || 'SubTotal:'}</p>
               <p>${subTotal}</p>
             </div>
             <div className="flex justify-between text-gray-400">
-              <p>{t('Shipping:')}</p>
+              <p>{t('Shipping:') || 'Shipping:'}</p>
               <p>${shipping.toFixed(2)}</p>
             </div>
             <div className="flex justify-between border-b border-gray-300 pb-3 text-gray-400">
-              <p>{t('Tax:')}</p>
+              <p>{t('Tax:') || 'Tax:'}</p>
               <p>${tax.toFixed(2)}</p>
             </div>
             <div className="flex justify-between font-medium">
-              <p>{t('Total:')}</p>
+              <p>{t('Total:') || 'Total:'}</p>
               <p>${total.toFixed(2)}</p>
             </div>
           </div>

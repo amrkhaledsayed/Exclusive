@@ -39,8 +39,8 @@ const Orders = () => {
             {orderList.length === 0 && (
               <div className="flex flex-col items-center justify-center">
                 <img
-                  src="/no order.png"
-                  alt=""
+                  src="/no order.webp"
+                  alt="no order"
                   className="w-[30rem] max-w-full"
                 />
                 <p className="text-[28px] font-bold">

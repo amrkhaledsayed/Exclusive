@@ -40,7 +40,11 @@ const Reviews = () => {
         </div>
         {reviewsList?.length === 0 && (
           <div className="flex flex-col items-center justify-center">
-            <img src="./no reviews.png" alt="" className="max-w-[35rem]" />
+            <img
+              src="/no reviews.webp"
+              alt="no reviews"
+              className="max-w-[35rem]"
+            />
             <p className="text-xl text-gray-500">
               {t('No reviews yet. Be the first to share your experience!')}
             </p>
