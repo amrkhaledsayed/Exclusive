@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 import { FaRegUserCircle } from 'react-icons/fa';
 import React, { useContext } from 'react';
-import { AppContext } from '@/common/context';
+import { AppContext } from '@/util/context';
 
 const Reviews = () => {
   const { reviewsList } = useContext(AppContext);

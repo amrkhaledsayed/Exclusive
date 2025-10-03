@@ -22,7 +22,7 @@ import { Check, LogIn, MessageSquareDot, X } from 'lucide-react';
 import { AddReview } from '../common/AddReview';
 import supabase from '@/Supabase/supabase-client';
 import toast from 'react-hot-toast';
-import { AppContext } from '@/common/context';
+import { AppContext } from '@/util/context';
 const Details = () => {
   const { user, addToFavorites, addReviews, reviewsList } =
     useContext(AppContext);

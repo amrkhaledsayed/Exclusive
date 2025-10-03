@@ -25,7 +25,7 @@ import { FaCcMastercard, FaCcPaypal, FaCcVisa, FaPlus } from 'react-icons/fa6';
 import { useForm, Controller } from 'react-hook-form';
 import { usePayment } from '@/Supabase/usePayment';
 import { useTranslation } from 'react-i18next';
-import { AppContext } from '@/common/context';
+import { AppContext } from '@/util/context';
 
 const AddCard = () => {
   const { t, i18n } = useTranslation();
