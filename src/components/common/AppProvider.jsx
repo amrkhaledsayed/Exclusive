@@ -1,5 +1,5 @@
 import { useAuthQuery } from '@/Supabase/useFetchUser';
-import { AppContext } from './context';
+import { AppContext } from '../../utils/context';
 import { useWishlist } from '@/Supabase/useAddtofavorites';
 import { useCart } from '@/Supabase/useCart';
 import { useOrder } from '@/Supabase/useOrder';

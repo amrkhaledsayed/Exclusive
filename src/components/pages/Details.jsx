@@ -22,7 +22,7 @@ import { Check, LogIn, MessageSquareDot, X } from 'lucide-react';
 import { AddReview } from '../common/AddReview';
 import supabase from '@/Supabase/supabase-client';
 import toast from 'react-hot-toast';
-import { AppContext } from '@/utils/context';
+import { AppContext } from '@/common/context';
 const Details = () => {
   const { user, addToFavorites, addReviews, reviewsList } =
     useContext(AppContext);
@@ -191,12 +191,19 @@ const Details = () => {
     <div>
       <div className="mx-auto max-w-[1200px] px-[7px] pt-[20px] md:pt-[50px]">
         <div className="mb-8 line-clamp-1 flex items-center text-[14px] font-normal text-gray-500">
-          <Link to="/" className="text-gray-500 md:text-lg" aria-label={t('Home')}>
+          <Link
+            to="/"
+            className="text-gray-500 md:text-lg"
+            aria-label={t('Home')}
+          >
             {t('Account')}
           </Link>
           <MdKeyboardArrowRight />
 
-          <Link className="ml-1 text-nowrap text-gray-500 md:text-lg" aria-label={t('category')}>
+          <Link
+            className="ml-1 text-nowrap text-gray-500 md:text-lg"
+            aria-label={t('category')}
+          >
             {product?.category}
           </Link>
           <MdKeyboardArrowRight />

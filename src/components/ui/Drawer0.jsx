@@ -5,10 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
-import InfoIcon from '@mui/icons-material/Info';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 import { IoCloseSharp } from 'react-icons/io5';
 import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
@@ -20,10 +17,14 @@ import {
   LogOut,
   ShoppingBag,
   ShoppingCart,
+  Contact,
   Star,
+  House,
+  Info,
+  UserPlus,
 } from 'lucide-react';
 import { useContext } from 'react';
-import { AppContext } from '@/utils/context';
+import { AppContext } from '@/common/context';
 import { useTranslation } from 'react-i18next';
 
 export default function SwipeableTemporaryDrawer({ open, setOpen }) {
@@ -37,22 +38,22 @@ export default function SwipeableTemporaryDrawer({ open, setOpen }) {
     {
       text: 'Home',
       link: '/',
-      icon: <HomeIcon className="text-red-400" />,
+      icon: <House className="text-red-400" />,
     },
     {
       text: 'Contact',
       link: '/contact',
-      icon: <ContactMailIcon className="text-red-400" />,
+      icon: <Contact className="text-red-400" />,
     },
     {
       text: 'About',
       link: '/about',
-      icon: <InfoIcon className="text-red-400" />,
+      icon: <Info className="text-red-400" />,
     },
     {
       text: 'Sign Up',
       link: '/sign-up',
-      icon: <PersonAddIcon className="text-red-400" />,
+      icon: <UserPlus className="text-red-400" />,
     },
     {
       text: 'Wishlist',

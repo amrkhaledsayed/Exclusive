@@ -6,7 +6,7 @@ import { Button } from '../ui/Button';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { AppContext } from '@/utils/context';
+import { AppContext } from '@/common/context';
 
 const Orders = () => {
   const MessageContext = createContext();

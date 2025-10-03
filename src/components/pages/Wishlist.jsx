@@ -5,7 +5,7 @@ import { FaHeart, FaLock } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import NoUser from '../ui/NoUser';
 import { useContext } from 'react';
-import { AppContext } from '@/utils/context';
+import { AppContext } from '@/common/context';
 
 const Wishlist = () => {
   const { t } = useTranslation();

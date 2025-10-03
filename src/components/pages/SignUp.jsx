@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Input } from '../ui/input';
 import { Button } from '../ui/Button';
 import { useContext } from 'react';
-import { AppContext } from '@/utils/context';
+import { AppContext } from '@/common/context';
 
 export default function SignUp() {
   const { t } = useTranslation();

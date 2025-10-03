@@ -1,7 +1,7 @@
 import Footer from '../common/Footer';
 import Header from '../common/Header';
 import { Outlet } from 'react-router-dom';
-import { AppProvider } from '@/utils/AppProvider';
+import { AppProvider } from '@/components/common/AppProvider';
 
 const Layout = () => {
   return (

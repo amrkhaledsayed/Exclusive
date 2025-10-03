@@ -134,7 +134,7 @@ const Item = (props) => {
           </Badge>
 
           <div
-            className={`absolute top-4 right-4 z-100 flex flex-col gap-3 transition-all duration-300 ${
+            className={`absolute top-4 right-4 z-100 flex flex-col gap-3 transition-all translate-x-0 md:translate-x-4 md:opacity-0 opacity-100 duration-300  ${
               isHovered
                 ? 'translate-x-0 opacity-100'
                 : 'translate-x-4 opacity-0'
