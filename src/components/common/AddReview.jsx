@@ -8,7 +8,7 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import React, { useState } from 'react';
 import { Loading } from '../ui/Loading';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 export const AddReview = ({
   setOpenDialog,

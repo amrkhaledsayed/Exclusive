@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 import { Loading } from '../ui/Loading';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 export default function SignIn() {
   const { t } = useTranslation();

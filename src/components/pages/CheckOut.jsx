@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import { Loading } from '../ui/Loading';
 import { SuccessMessage } from '../ui/SuccessMessage';
 import { CircleCheckBig } from 'lucide-react';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 const CheckOut = () => {
   const [value, setValue] = useState('Bank');

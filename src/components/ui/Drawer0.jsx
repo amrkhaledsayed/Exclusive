@@ -24,7 +24,7 @@ import {
   UserPlus,
 } from 'lucide-react';
 import { useContext } from 'react';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 import { useTranslation } from 'react-i18next';
 
 export default function SwipeableTemporaryDrawer({ open, setOpen }) {

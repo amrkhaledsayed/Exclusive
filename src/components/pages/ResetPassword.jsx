@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useContext, useEffect, useState } from 'react';
 import supabase from '@/Supabase/supabase-client';
 import toast from 'react-hot-toast';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 export const ResetPassword = () => {
   const { t } = useTranslation();

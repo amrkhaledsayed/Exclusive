@@ -17,7 +17,7 @@ import { Button } from '../ui/Button';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import MenuDock from '../ui/shadcn-io/menu-dock';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 import { Loading } from '../ui/Loading';
 
 const Header = () => {

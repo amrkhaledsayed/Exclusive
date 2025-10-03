@@ -18,7 +18,7 @@ import TapChangePassword from '../common/TapChangePassword';
 import TapAdressBook from '../common/TapAdressBook';
 import TapPayement from '../common/TapPayement';
 import NoUser from '../ui/NoUser';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 const initialState = {
   currentPassword: '',

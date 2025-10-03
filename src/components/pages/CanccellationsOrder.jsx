@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import clsx from 'clsx';
 import { Button } from '../ui/Button';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 const CanccellationsOrder = () => {
   const { orderList } = React.useContext(AppContext);

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Input } from '../ui/input';
 import NoUser from '../ui/NoUser';
 import { Loading } from '../ui/Loading';
-import { AppContext } from '@/util/context';
+import { AppContext } from '@/utils/context';
 
 const Cart = () => {
   const { user, cartList, clearData } = React.useContext(AppContext);
