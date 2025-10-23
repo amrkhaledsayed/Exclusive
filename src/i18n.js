@@ -20,13 +20,13 @@ i18n
       backend: { loadPath: '/locales/{{lng}}/translation.json' },
     },
     () => {
-      const currentLang = i18n.language;
+      const currentLang = i18n.language || 'en';
       document.documentElement.lang = currentLang;
       document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     }
   )
   .then(() => {
-    const currentLang = i18n.language;
+    const currentLang = i18n.language || 'en';
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
   });
