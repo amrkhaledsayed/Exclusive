@@ -57,8 +57,8 @@ const CheckOut = () => {
     if (data) {
       reset({
         fullName: `${data?.first_name ?? ''} ${data?.last_name ?? ''}`.trim(),
-        phone: `${data?.phoneNumber}`,
-        email: `${data?.email}`,
+        phone: `${data?.phoneNumber || ''}`,
+        email: `${data?.email || ''}`,
       });
     }
   }, [data, reset]);
@@ -103,10 +103,12 @@ const CheckOut = () => {
       await addOrder(orderData);
 
       clearData();
+      setOpen(false);
       reset();
       navigate('/');
     } catch (error) {
       console.error('Checkout error:', error);
+      return;
     } finally {
       setLoading(false);
     }
@@ -317,7 +319,7 @@ const CheckOut = () => {
             </div>
           </div>
 
-          <div className="flex w-[100%] flex-col gap-2 px-3 pt-3">
+          <div className="flex w-full flex-col gap-2 px-3 pt-3">
             <div className="flex items-center justify-between pb-3 font-[500]">
               <p className="text-gray-400">{t('Subtotal')}:</p>
               <p>${subTotal?.toFixed(2)}</p>
