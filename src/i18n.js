@@ -14,7 +14,7 @@ i18n
       supportedLngs: ['en', 'ar', 'tr', 'sp', 'it'],
       interpolation: { escapeValue: false },
       detection: {
-        order: ['localStorage', 'navigator'],
+        order: ['localStorage'],
         caches: ['localStorage'],
       },
       backend: { loadPath: '/locales/{{lng}}/translation.json' },
