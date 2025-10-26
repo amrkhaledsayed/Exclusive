@@ -21,22 +21,41 @@ export const useAuthQuery = () => {
     },
     staleTime: 1000 * 60 * 60,
   });
-  const getUserAndSaveToDB = async () => {
-    const { data } = await supabase.auth.getUser();
+  const saveUserToDB = async (user) => {
+    if (!user) return;
 
-    const { data: profiles } = await supabase.from('profiles').select('id');
-    if (data?.user?.id?.includes(profiles) === false) {
-      const { error } = await supabase.from('profiles').upsert({
-        id: data?.user?.id,
-        email: data?.user?.email,
-        first_name: data?.user?.user_metadata?.full_name?.split(' ')[0],
-        last_name: data?.user?.user_metadata?.full_name?.split(' ')[1],
-      });
-      if (error) throw new Error(error.message);
+    const { data: existingProfile } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('id', user.id)
+      .single();
+
+    if (existingProfile) {
+      return;
+    }
+
+    const { error } = await supabase.from('profiles').insert({
+      id: user.id,
+      email: user.email,
+      first_name:
+        user.user_metadata?.full_name?.split(' ')[0] ||
+        user.user_metadata?.first_name,
+      last_name:
+        user.user_metadata?.full_name?.split(' ')[1] ||
+        user.user_metadata?.last_name,
+      provider: user.app_metadata.provider || 'credentials',
+    });
+
+    if (error) {
+      console.error('Error saving user to DB:', error.message);
+      throw new Error(error.message);
     }
   };
+
   useEffect(() => {
-    getUserAndSaveToDB();
+    if (user) {
+      saveUserToDB(user);
+    }
   }, [user]);
   useEffect(() => {
     const { data: listener } = supabase.auth.onAuthStateChange(
@@ -98,7 +117,7 @@ export const useAuthQuery = () => {
           first_name: firstName,
           last_name: lastName,
           password,
-
+          provider: 'credentials',
           phoneNumber,
         },
       ]);
@@ -124,10 +143,9 @@ export const useAuthQuery = () => {
   });
 
   const handleGoogleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
     });
-
     if (error) {
       console.error('Error logging in:', error.message);
     }

@@ -21,14 +21,31 @@ export const OrederBox = (props) => {
     subTotal,
     orderList,
     tax,
+    save,
     shipping,
   } = props;
+
   const date = new Date(dateFull);
   const formattedDate = date?.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
   });
+
+  // حساب عرض الخصم في الـ Total
+  const hasDiscount = orderList?.discount && orderList?.discount > 0;
+  const displayTotal = hasDiscount ? (
+    <div className="flex flex-col items-start">
+      {orderList?.discount_percentage && (
+        <span className="text-xs text-green-600">
+          -{orderList.discount_percentage}% {t('off')}
+        </span>
+      )}
+      <p className="text-red text-[15px] font-[500]">LE {total.toFixed(2)}</p>
+    </div>
+  ) : (
+    <p className="text-red text-[15px] font-[500]">LE {total.toFixed(2)}</p>
+  );
 
   return (
     <div className="flex w-full justify-between rounded-[8px] bg-white px-5.5 py-4 drop-shadow-xl transition-all hover:drop-shadow-2xl">
@@ -63,6 +80,7 @@ export const OrederBox = (props) => {
             </button>
           )}
         </div>
+
         <div className="flex w-full flex-wrap items-center justify-between px-4">
           <div className="flex items-center gap-1">
             <MdOutlineDateRange size={20} className="text-red" />
@@ -73,6 +91,7 @@ export const OrederBox = (props) => {
               <p className="text-[15px] font-medium">{formattedDate}</p>
             </div>
           </div>
+
           <div className="flex items-center gap-1">
             <LuBox size={20} className="text-red" />
             <div className="flex flex-col items-start">
@@ -86,19 +105,20 @@ export const OrederBox = (props) => {
               </div>
             </div>
           </div>
+
           <div className="flex items-center gap-1">
             <AiFillDollarCircle size={20} className="text-red" />
             <div className="flex flex-col items-start">
               <p className="text-[18px] font-[500] text-gray-700">
                 {t('Total')}
               </p>
-              <p className="text-red text-[15px] font-[500]">
-                ${total.toFixed(2)}
-              </p>
+              {displayTotal}
             </div>
           </div>
         </div>
+
         <div className="flex w-full items-center justify-between border-t-1 border-t-red-100 px-4"></div>
+
         <div className="flex w-full items-center justify-between gap-3">
           <DrawerOrder
             date={formattedDate}
@@ -107,8 +127,12 @@ export const OrederBox = (props) => {
             id={id}
             subTotal={subTotal}
             total={total}
+            save={save}
             products={products}
             orderList={orderList}
+            discount={orderList.discount || 0}
+            discountPercentage={orderList.discount_percentage || 0}
+            couponCode={orderList.coupon_code || null}
           />
           <Button
             variant="destructive"
@@ -122,6 +146,9 @@ export const OrederBox = (props) => {
                 subTotal,
                 orderList,
                 products,
+                discount: orderList.discount,
+                discountPercentage: orderList.discount_percentage,
+                couponCode: orderList.coupon_code,
               })
             }
           >

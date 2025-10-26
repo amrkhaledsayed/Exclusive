@@ -91,7 +91,7 @@ const About = () => {
         <div className="h-[400px] w-full flex-none rounded-xl bg-[#EB7EA8] lg:h-[610px] lg:w-[700px]"></div>
       </div>
 
-      <div className="mt-[140px] flex flex-wrap justify-center gap-6">
+      <div className="mt-[140px] flex flex-wrap lg:flex-nowrap justify-center gap-6">
         {CardsInfo.map((item, index) => (
           <CardInfo
             key={index}
@@ -111,7 +111,7 @@ const About = () => {
           </CardInfo>
         ))}
       </div>
-      <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
+      <div className=" py-20 ">
         <div className="container mx-auto">
           <div className="mb-16 text-center">
             <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-600">

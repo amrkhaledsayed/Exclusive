@@ -62,6 +62,7 @@ const Orders = () => {
                   products={order?.products || []}
                   orderList={orderList[index]}
                   state={order?.state}
+                  save={order?.save || 0}
                 />
               ))}
             </div>

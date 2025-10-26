@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Rating from '@mui/material/Rating';
 import Skeleton from '@mui/material/Skeleton';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,8 @@ import { Button } from './Button';
 import { useInView } from 'react-intersection-observer';
 import { IoMdAdd } from 'react-icons/io';
 import { QuickView } from '../common/QuickView';
+import { BsCartPlus } from 'react-icons/bs';
+import { FaCheck } from 'react-icons/fa';
 
 const Item = (props) => {
   const {
@@ -40,11 +42,16 @@ const Item = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const priceAfterDiscount = price - (discount / 100) * price;
   const { addToFavorites, removeFromFavorites } = useWishlist(user?.id);
-  const { addItem } = useCart(user?.id);
+  const { addItem, deleteItem, cartList } = useCart(user?.id);
   const [loaded, setLoaded] = useState(false);
 
   const [isFavorite, setIsFavorite] = useState(wishlist);
   const [open, setOpen] = useState(false);
+
+  // Check if item is in cart
+  const isInCart = useMemo(() => {
+    return cartList?.some((item) => item.product_id === id);
+  }, [cartList, id]);
 
   const formattedBeforePrice =
     i18n.language === 'ar'
@@ -55,6 +62,7 @@ const Item = (props) => {
     i18n.language === 'ar'
       ? Number(priceAfterDiscount?.toFixed(2)).toLocaleString('ar-EG')
       : Number(priceAfterDiscount?.toFixed(2));
+
   const handleAddFavorite = () => {
     if (isFavorite) {
       removeFromFavorites(id);
@@ -74,6 +82,24 @@ const Item = (props) => {
       setIsFavorite(true);
     }
   };
+
+  const handleToggleCart = () => {
+    if (isInCart) {
+      // Remove from cart
+      deleteItem(id);
+    } else {
+      // Add to cart
+      addItem({
+        user_id: user?.id,
+        product_id: Number(id),
+        product_name: productName,
+        price: Number(priceAfterDiscount.toFixed(2)),
+        product_img: image,
+        quantity: 1,
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex h-[500px] w-[270px] flex-col gap-3">
@@ -92,7 +118,7 @@ const Item = (props) => {
 
   return (
     <Card
-      className="group glassmorphism bg-card/60 relative h-[450px] w-[240px] overflow-hidden border-white/20 transition-all duration-500 hover:drop-shadow-xl"
+      className="group glassmorphism relative h-[450px] w-[240px] overflow-hidden border-white/20 bg-card/60 transition-all duration-500 hover:drop-shadow-xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -121,7 +147,7 @@ const Item = (props) => {
             )}
 
             {!loaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 z-20">
+              <div className="absolute inset-0 z-20 flex items-center justify-center bg-gray-200">
                 <TrophySpin color="#ff1010" size="medium" />
               </div>
             )}
@@ -129,25 +155,25 @@ const Item = (props) => {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
-          <Badge className="bg-red absolute top-4 left-4 animate-pulse border-0 px-3 py-1 text-sm font-bold text-white shadow-lg">
+          <Badge className="bg-red absolute left-4 top-4 animate-pulse border-0 px-3 py-1 text-sm font-bold text-white shadow-lg">
             <Zap className="mr-1 h-3 w-3" />-{Number(discount?.toFixed(0))}%
           </Badge>
 
           <div
-            className={`absolute top-4 right-4 z-100 flex flex-col gap-3 transition-all translate-x-0 md:translate-x-4 md:opacity-0 opacity-100 duration-300  ${
+            className={`absolute right-4 top-4 z-50 flex flex-col gap-3 transition-all duration-300 ${
               isHovered
                 ? 'translate-x-0 opacity-100'
-                : 'translate-x-4 opacity-0'
+                : 'max-md:translate-x-0 max-md:opacity-100 md:translate-x-4 md:opacity-0'
             }`}
           >
             <Button
               size="icon"
-              className="glassmorphism border-red h-10 w-10 rounded-full bg-[#c8c8c8] transition-all duration-300 hover:scale-110"
+              className="glassmorphism h-10 w-10 rounded-full border-white/30 bg-white/80 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white"
               onClick={handleAddFavorite}
             >
               <Heart
                 className={`h-4 w-4 transition-colors duration-200 ${
-                  isFavorite ? 'fill-red-500 text-red-500' : 'text-white'
+                  isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-700'
                 }`}
               />
             </Button>
@@ -155,9 +181,9 @@ const Item = (props) => {
             <Button
               onClick={() => setOpen(true)}
               size="icon"
-              className="glassmorphism h-10 w-10 rounded-full border-white/30 bg-[#c8c8c8] transition-all duration-300 hover:scale-110"
+              className="glassmorphism h-10 w-10 rounded-full border-white/30 bg-white/80 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white"
             >
-              <Eye className="h-4 w-4 text-white" />
+              <Eye className="h-4 w-4 text-gray-700" />
             </Button>
           </div>
 
@@ -165,7 +191,7 @@ const Item = (props) => {
         </div>
 
         <div className="from-card/80 to-card h-full space-y-4 bg-gradient-to-b p-6">
-          <h3 className="text-card-foreground group-hover:text-primary line-clamp-1 h-full text-xl leading-tight font-bold transition-colors duration-300">
+          <h3 className="text-card-foreground group-hover:text-primary line-clamp-1 h-full text-xl font-bold leading-tight transition-colors duration-300">
             {t(`titles.${productName}`, { defaultValue: productName })}{' '}
           </h3>
 
@@ -198,22 +224,26 @@ const Item = (props) => {
           </div>
 
           <Button
-            variant="destructive"
-            onClick={() =>
-              addItem({
-                user_id: user?.id,
-                product_id: Number(id),
-                product_name: productName,
-                price: Number(priceAfterDiscount.toFixed(2)),
-                product_img: image,
-                quantity: 1,
-              })
-            }
-            className="group/button relative mt-[1rem] w-fit overflow-hidden rounded-full border-0 px-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            variant={isInCart ? 'outline' : 'destructive'}
+            onClick={handleToggleCart}
+            className={`group/button relative mt-[1rem] w-full overflow-hidden rounded-lg border-0 px-3 font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              isInCart
+                ? 'bg-green-600 text-white hover:bg-green-700'
+                : 'text-white'
+            }`}
             size="lg"
           >
-            <IoMdAdd />
-
+            {isInCart ? (
+              <>
+                <FaCheck className="mr-2" />
+                {t('In Cart')}
+              </>
+            ) : (
+              <>
+                <BsCartPlus className="mr-2" />
+                {t('Add To cart')}
+              </>
+            )}
             <div className="absolute inset-0 -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover/button:translate-x-full"></div>
           </Button>
         </div>

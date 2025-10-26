@@ -18,11 +18,11 @@ export const useCart = (id) => {
     queryFn: () => fetchCartList(id),
     enabled: !!id,
   });
+
   const addMutation = useMutation({
     mutationFn: async (item) => {
       if (cartList.find((product) => product.product_id === item.product_id)) {
         toast.error('Item already in Cart');
-
         return;
       }
       if (!id) {
@@ -46,6 +46,7 @@ export const useCart = (id) => {
       );
     },
     onSuccess: (newItem) => {
+      if (!newItem) return;
       queryClient.setQueryData(['cartList', id], (old = []) => [
         ...(old || []),
         newItem,
@@ -91,6 +92,7 @@ export const useCart = (id) => {
       queryClient.invalidateQueries(['cartList', id]);
     }
   };
+
   const updateQuantityMutation = useMutation({
     mutationFn: async ({ product_id, quantity }) => {
       return toast.promise(
@@ -103,7 +105,12 @@ export const useCart = (id) => {
           .then(({ error, data }) => {
             if (error) throw new Error(error.message);
             return data?.[0];
-          })
+          }),
+        {
+          loading: 'Updating...',
+          success: 'Quantity updated',
+          error: 'Could not update',
+        }
       );
     },
     onSuccess: (updatedItem) => {

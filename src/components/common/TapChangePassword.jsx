@@ -6,6 +6,7 @@ import { Button } from '../ui/Button';
 import { FaSave } from 'react-icons/fa';
 import React, { useState } from 'react';
 import { Loading } from '../ui/Loading';
+import toast from 'react-hot-toast';
 
 const TapChangePassword = ({ state, dispatch, handlePasswordUpdate }) => {
   const { t } = useTranslation();

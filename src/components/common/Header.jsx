@@ -33,7 +33,6 @@ const Header = () => {
     wishlist,
     cartList,
   } = React.useContext(AppContext);
-
   const { products, fetchData } = useFetchData({ search: value });
 
   const { t } = useTranslation();

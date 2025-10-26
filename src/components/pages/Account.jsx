@@ -175,6 +175,7 @@ const Account = () => {
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row">
             <SwitchButtonsManage
               activeTab={activeTab}
+              provider={user?.app_metadata?.provider}
               setActiveTab={setActiveTab}
             />
             <motion.div
@@ -200,14 +201,14 @@ const Account = () => {
                   changeOther={changeOther}
                 />
               )}
-
-              {activeTab === 'changepassword' && (
-                <TapChangePassword
-                  state={state}
-                  dispatch={dispatch}
-                  handlePasswordUpdate={handlePasswordUpdate}
-                />
-              )}
+              {user?.app_metadata?.provider === 'email' &&
+                activeTab === 'changepassword' && (
+                  <TapChangePassword
+                    state={state}
+                    dispatch={dispatch}
+                    handlePasswordUpdate={handlePasswordUpdate}
+                  />
+                )}
 
               {activeTab === 'AddressBook' && (
                 <TapAdressBook

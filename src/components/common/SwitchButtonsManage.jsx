@@ -5,7 +5,7 @@ import { CiLocationOn, CiLock } from 'react-icons/ci';
 import { FiUser } from 'react-icons/fi';
 import { MdPayment } from 'react-icons/md';
 
-const SwitchButtonsManage = ({ activeTab, setActiveTab }) => {
+const SwitchButtonsManage = ({ activeTab, setActiveTab, provider }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,19 +26,21 @@ const SwitchButtonsManage = ({ activeTab, setActiveTab }) => {
             <FiUser size={20} />
             {t('My Profile')}
           </button>
-          <button
-            onClick={() => setActiveTab('changepassword')}
-            className={clsx(
-              'flex w-full items-center gap-1.5 py-2 text-[16px] font-normal text-gray-400 transition-all ltr:rounded-tr-xl ltr:rounded-br-xl ltr:pl-2 rtl:rounded-tl-xl rtl:rounded-bl-xl rtl:pr-2',
-              {
-                'ltr:border-l-red rtl:border-r-red text-red bg-gray-100 ltr:border-l-8 rtl:border-r-8':
-                  activeTab === 'changepassword',
-              }
-            )}
-          >
-            <CiLock size={20} />
-            {t('Change Password')}
-          </button>
+          {provider === 'email' && (
+            <button
+              onClick={() => setActiveTab('changepassword')}
+              className={clsx(
+                'flex w-full items-center gap-1.5 py-2 text-[16px] font-normal text-gray-400 transition-all ltr:rounded-tr-xl ltr:rounded-br-xl ltr:pl-2 rtl:rounded-tl-xl rtl:rounded-bl-xl rtl:pr-2',
+                {
+                  'ltr:border-l-red rtl:border-r-red text-red bg-gray-100 ltr:border-l-8 rtl:border-r-8':
+                    activeTab === 'changepassword',
+                }
+              )}
+            >
+              <CiLock size={20} />
+              {t('Change Password')}
+            </button>
+          )}
           <button
             onClick={() => setActiveTab('AddressBook')}
             className={clsx(

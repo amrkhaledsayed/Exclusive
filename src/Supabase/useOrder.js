@@ -33,7 +33,6 @@ export const useOrder = (id) => {
           .select()
           .then(({ error, data }) => {
             if (error) throw new Error(error.message);
-            console.log(data[0]);
 
             return data[0];
           }),
