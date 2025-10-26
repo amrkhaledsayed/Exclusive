@@ -27,6 +27,15 @@ export const useWishlist = (userId) => {
         throw new Error('User not logged in');
       }
 
+      // Check if already in favorites
+      const existingItem = wishlist.find(
+        (fav) => fav.product_id === item.product_id
+      );
+      if (existingItem) {
+        toast.error('Item already in favorites');
+        return null;
+      }
+
       const { data, error } = await supabase
         .from('favorites')
         .insert([item])
@@ -36,6 +45,7 @@ export const useWishlist = (userId) => {
       return data[0];
     },
     onSuccess: (newItem) => {
+      if (!newItem) return;
       queryClient.setQueryData(['wishlist', userId], (old = []) => [
         ...old,
         newItem,
