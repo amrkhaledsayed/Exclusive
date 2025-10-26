@@ -30,7 +30,6 @@ const Item = (props) => {
     rating,
     availabilityStatus,
     loading = false,
-    wishlist = false,
   } = props;
   const { user } = useAuthQuery();
   const { ref, inView } = useInView({
@@ -41,17 +40,22 @@ const Item = (props) => {
 
   const [isHovered, setIsHovered] = useState(false);
   const priceAfterDiscount = price - (discount / 100) * price;
-  const { addToFavorites, removeFromFavorites } = useWishlist(user?.id);
+  const { addToFavorites, removeFromFavorites, wishlist } = useWishlist(
+    user?.id
+  );
   const { addItem, deleteItem, cartList } = useCart(user?.id);
   const [loaded, setLoaded] = useState(false);
-
-  const [isFavorite, setIsFavorite] = useState(wishlist);
   const [open, setOpen] = useState(false);
 
   // Check if item is in cart
   const isInCart = useMemo(() => {
     return cartList?.some((item) => item.product_id === id);
   }, [cartList, id]);
+
+  // Check if item is in wishlist (from API data)
+  const isFavorite = useMemo(() => {
+    return wishlist?.some((item) => item.product_id === id);
+  }, [wishlist, id]);
 
   const formattedBeforePrice =
     i18n.language === 'ar'
@@ -63,10 +67,9 @@ const Item = (props) => {
       ? Number(priceAfterDiscount?.toFixed(2)).toLocaleString('ar-EG')
       : Number(priceAfterDiscount?.toFixed(2));
 
-  const handleAddFavorite = () => {
+  const handleToggleFavorite = () => {
     if (isFavorite) {
       removeFromFavorites(id);
-      setIsFavorite(false);
     } else {
       addToFavorites({
         user_id: user?.id,
@@ -79,16 +82,13 @@ const Item = (props) => {
         rating,
         reviews,
       });
-      setIsFavorite(true);
     }
   };
 
   const handleToggleCart = () => {
     if (isInCart) {
-      // Remove from cart
       deleteItem(id);
     } else {
-      // Add to cart
       addItem({
         user_id: user?.id,
         product_id: Number(id),
@@ -168,12 +168,16 @@ const Item = (props) => {
           >
             <Button
               size="icon"
-              className="glassmorphism h-10 w-10 rounded-full border-white/30 bg-white/80 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-white"
-              onClick={handleAddFavorite}
+              className={`glassmorphism h-10 w-10 rounded-full border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-110 ${
+                isFavorite
+                  ? 'bg-red-500 hover:bg-red-600'
+                  : 'bg-white/80 hover:bg-white'
+              }`}
+              onClick={handleToggleFavorite}
             >
               <Heart
                 className={`h-4 w-4 transition-colors duration-200 ${
-                  isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-700'
+                  isFavorite ? 'fill-white text-white' : 'text-gray-700'
                 }`}
               />
             </Button>
@@ -250,7 +254,7 @@ const Item = (props) => {
         <QuickView
           open={open}
           product={product}
-          handleAddFavorite={handleAddFavorite}
+          handleAddFavorite={handleToggleFavorite}
           setOpen={setOpen}
           priceAfterDiscount={priceAfterDiscount}
         />
