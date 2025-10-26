@@ -230,11 +230,7 @@ const Item = (props) => {
           <Button
             variant={isInCart ? 'outline' : 'destructive'}
             onClick={handleToggleCart}
-            className={`group/button relative mt-[1rem] w-full overflow-hidden rounded-lg border-0 px-3 font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg ${
-              isInCart
-                ? 'bg-green-600 text-white hover:bg-green-700'
-                : 'text-white'
-            }`}
+            className={`group/button relative mt-[1rem] w-full overflow-hidden rounded-lg border-0 px-3 font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg `}
             size="lg"
           >
             {isInCart ? (
